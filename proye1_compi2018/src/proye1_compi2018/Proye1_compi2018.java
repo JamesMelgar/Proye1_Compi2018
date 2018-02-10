@@ -16,6 +16,8 @@ public class Proye1_compi2018 {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        principal v = new principal();
+        v.show();
     }
     
 }
