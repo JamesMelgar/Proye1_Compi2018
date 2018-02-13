@@ -1,0 +1,128 @@
+package achtml;
+import java_cup.runtime.Symbol;
+import proye1_compi2018.Nodo;
+
+parser code
+{:
+	public String resultado="";
+	public Nodo padre;
+	public int contador = 1;
+    @Override
+    public void syntax_error(Symbol s){
+        System.out.println("Error Sintactico en la Linea " + (s.right+1) +" Columna "+s.left+ ". Identificador " +s.value + " no reconocido." );
+    }
+
+    @Override
+    public void unrecovered_syntax_error(Symbol s){
+        //System.out.println("Error Sintactico en la Linea " + (s.right+1)+ "Columna "+s.left+". Identificador " + s.value + " no reconocido.");
+    }
+:}
+
+action code
+{:
+
+:}
+
+terminal htmli, htmlf, cuerpoi, cuerpof, encabezadoi, encabezadof, cjsi, cjsf, ccssi, ccssf, ptc, cierre, ruta;
+terminal igual, cadena, numero, titulo, texto, fondo;
+
+non terminal INICIO;
+
+non terminal SENTENCIAS , MEDIO, ENCABEZADO, INT_ENCABEZADO, CUERPO, INT_CUERPO, FON_CUERPO;
+
+start with INICIO;
+
+INICIO ::= SENTENCIAS:sts htmlf {: 
+        parser.padre = (Nodo) sts;
+        System.out.println("DOCUMENTO OK"); 
+        :};
+
+SENTENCIAS ::= SENTENCIAS:sts MEDIO:md {: 
+               Nodo temp;
+               temp = (Nodo) sts;
+               temp.addHijo((Nodo)md);
+               RESULT=temp;
+            :}
+              | htmli {:
+                Nodo tmp = new Nodo("INICIO");
+		tmp.setNumNodo(parser.contador++); 
+		RESULT=tmp;
+            :} ;
+
+MEDIO ::= ENCABEZADO:tmp {: 
+            RESULT=tmp;
+    :} encabezadof
+
+        | CUERPO:tmp {: 
+            RESULT=tmp;
+        :} cuerpof ;
+
+
+CUERPO ::= CUERPO:enc INT_CUERPO:inc {: 
+               Nodo temp;
+               temp = (Nodo) enc;
+               temp.addHijo((Nodo)inc);
+               RESULT=temp;
+           :}
+        | cuerpoi FON_CUERPO:tmp {: 
+            RESULT=tmp; :} ;
+
+
+INT_CUERPO ::= texto:i  {:
+                    Nodo tmp = new Nodo("texto");
+                    String str = i.toString();
+                    String ncadena=str.substring(7,str.length()-11);
+                    tmp.setValor(ncadena);
+                    tmp.setNumNodo(parser.contador++);
+                    RESULT=tmp; :} ;
+
+FON_CUERPO ::= cierre {:
+                     Nodo tmp = new Nodo("Cuerpo");
+                     tmp.setValor("vacio");
+                     tmp.setNumNodo(parser.contador++);
+                     RESULT=tmp;
+               :}
+             | fondo igual cadena:i cierre {:
+                     Nodo tmp = new Nodo("Cuerpo");
+                    String str = i.toString();
+                    String ncadena=str.substring(1,str.length()-1);
+                    tmp.setValor(ncadena);
+                    tmp.setNumNodo(parser.contador++);
+                    RESULT=tmp;
+               :};
+
+ENCABEZADO ::= ENCABEZADO:enc INT_ENCABEZADO:inc{: 
+               Nodo temp;
+               temp = (Nodo) enc;
+               temp.addHijo((Nodo)inc);
+               RESULT=temp;
+           :}
+              | encabezadoi {: 
+                    Nodo tmp = new Nodo("encabezado");
+                    tmp.setNumNodo(parser.contador++);
+                    RESULT=tmp;
+              :} ;
+
+INT_ENCABEZADO ::= cjsi ruta igual cadena:i ptc cierre cjsf {: 
+                    Nodo tmp = new Nodo("cjsi");
+                    String str = i.toString();
+                    String ncadena=str.substring(1,str.length()-1);
+                    tmp.setValor(ncadena);
+                    tmp.setNumNodo(parser.contador++);
+                    RESULT=tmp;
+              :} 
+                 | ccssi ruta igual  cadena:i ptc cierre ccssf {: 
+                    Nodo tmp = new Nodo("ccss");
+                    String str = i.toString();
+                    String ncadena=str.substring(1,str.length()-1);
+                    tmp.setValor(ncadena);
+                    tmp.setNumNodo(parser.contador++);
+                    RESULT=tmp;
+              :} 
+                | titulo:i
+                    {: Nodo tmp = new Nodo("titulo");
+                    String str = i.toString();
+                    String ncadena=str.substring(8,str.length()-12);
+                    tmp.setValor(ncadena);
+                    tmp.setNumNodo(parser.contador++);
+                    RESULT=tmp; :} ;

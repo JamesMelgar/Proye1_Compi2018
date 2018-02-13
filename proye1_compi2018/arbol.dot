@@ -1,5 +1,5 @@
 digraph G {node[shape=box, style=filled, color=blanchedalmond]; edge[color=chocolate3];rankdir=UD 
 
-"7_INICIO=null"->"6_SENTENCIA=null""6_SENTENCIA=null"->"2_TIPO=null""2_TIPO=null"->"1_int=null""6_SENTENCIA=null"->"4_ID=null""4_ID=null"->"3_id=x""6_SENTENCIA=null"->"5_puntoycoma=;"
+"1_INICIO=null"->"2_encabezado=null""2_encabezado=null"->"3_cjsi=C:/fichero/fichero_1.cjs""2_encabezado=null"->"4_cjsi=C:/fichero/fichero_1.cjs""2_encabezado=null"->"5_titulo= USAC- WEB ""1_INICIO=null"->"6_Cuerpo=vacio""6_Cuerpo=vacio"->"7_texto=mundo"
 
 }

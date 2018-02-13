@@ -5,15 +5,23 @@
  */
 package proye1_compi2018;
 
+import achtml.AnalizadorLexico_chtml;
+import achtml.AnalizadorSintactico_chtml;
+import java.io.BufferedReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.io.StringReader;
+
 /**
  *
  * @author James_PC
  */
 public class navegador extends javax.swing.JPanel {
 
-    /**
-     * Creates new form navegador
-     */
+  AnalizadorLexico_chtml lexico_chtml;
+  AnalizadorSintactico_chtml sintactico_chtml;
+  
     public navegador() {
         initComponents();
     }
@@ -30,9 +38,12 @@ public class navegador extends javax.swing.JPanel {
         jPanel2 = new javax.swing.JPanel();
         bt_adelante = new javax.swing.JToggleButton();
         bt_atras = new javax.swing.JToggleButton();
-        jToggleButton1 = new javax.swing.JToggleButton();
+        bt_cargar = new javax.swing.JToggleButton();
         jLabel1 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
+        jToggleButton1 = new javax.swing.JToggleButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        txt_texto = new javax.swing.JTextArea();
 
         jPanel2.setBackground(new java.awt.Color(204, 255, 204));
 
@@ -40,11 +51,22 @@ public class navegador extends javax.swing.JPanel {
 
         bt_atras.setIcon(new javax.swing.ImageIcon("C:\\Users\\James_PC\\Documents\\NetBeansProjects\\pr1compi2\\Proye1_Compi2018\\proye1_compi2018\\Iconos\\atras.PNG")); // NOI18N
 
-        jToggleButton1.setIcon(new javax.swing.ImageIcon("C:\\Users\\James_PC\\Documents\\NetBeansProjects\\pr1compi2\\Proye1_Compi2018\\proye1_compi2018\\Iconos\\recargar.PNG")); // NOI18N
+        bt_cargar.setIcon(new javax.swing.ImageIcon("C:\\Users\\James_PC\\Documents\\NetBeansProjects\\pr1compi2\\Proye1_Compi2018\\proye1_compi2018\\Iconos\\recargar.PNG")); // NOI18N
+        bt_cargar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_cargarActionPerformed(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 51, 51));
         jLabel1.setText("Usac-web");
+
+        jToggleButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -56,15 +78,18 @@ public class navegador extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(bt_adelante, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jToggleButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(bt_cargar, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(164, 164, 164)
-                        .addComponent(jLabel1))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(18, 18, 18)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 520, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 520, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(164, 164, 164)
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jToggleButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -72,37 +97,112 @@ public class navegador extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(11, 11, 11)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addGap(14, 14, 14))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                                .addComponent(jToggleButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)))
                         .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(bt_adelante, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(bt_atras, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                        .addComponent(jToggleButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
+                        .addComponent(bt_cargar, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
+
+        txt_texto.setColumns(20);
+        txt_texto.setRows(5);
+        jScrollPane1.setViewportView(txt_texto);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jScrollPane1)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 212, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 206, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void bt_cargarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_cargarActionPerformed
+        // TODO add your handling code here:
+        String entrada;
+        entrada = this.txt_texto.getText();//tomamos el texto
+        
+        lexico_chtml = new AnalizadorLexico_chtml(new BufferedReader( new StringReader(entrada)));
+        sintactico_chtml = new AnalizadorSintactico_chtml(lexico_chtml);
+        
+        try{
+            sintactico_chtml.parse();
+        }catch(Exception ex){
+            System.out.println("Error "+ex);
+        }
+    }//GEN-LAST:event_bt_cargarActionPerformed
+
+    private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
+        // TODO add your handling code here:
+        if(sintactico_chtml != null){
+            if(sintactico_chtml.padre != null){
+                graficar(sintactico_chtml.padre);
+                System.out.println("Se ha graficado con exito");
+            }
+        }
+        else
+            System.out.println("No se puede graficar!!!");
+    }//GEN-LAST:event_jToggleButton1ActionPerformed
+    
+     public void graficar(Nodo raiz){
+        FileWriter archivo = null;
+        PrintWriter pw = null;
+        String cadena = graficarNodo(raiz);
+        
+        try{
+            archivo = new FileWriter("arbol.dot");
+            pw = new PrintWriter(archivo);
+            pw.println("digraph G {node[shape=box, style=filled, color=blanchedalmond]; edge[color=chocolate3];rankdir=UD \n");
+            pw.println(cadena);
+            pw.println("\n}");
+            archivo.close();
+        }catch (Exception e) {
+            System.out.println(e +" 1");
+        }
+        
+        try {
+            String cmd = "dot -Tpng arbol.dot -o arbol.png";
+            Runtime.getRuntime().exec(cmd);
+        } catch (IOException ioe) {
+            System.out.println(ioe +" 2");
+        }
+        
+    }
+    
+    public String graficarNodo(Nodo nodo){
+        String cadena = "";
+        for(Nodo hijos : nodo.getHijos())
+        {
+            cadena += "\"" + nodo.getNumNodo() + "_" + nodo.getNombre() + "=" + nodo.getValor() + "\"->\"" + hijos.getNumNodo() + "_" + hijos.getNombre() + "=" + hijos.getValor() + "\"";
+            cadena += graficarNodo(hijos);
+        }
+        return cadena;
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JToggleButton bt_adelante;
     private javax.swing.JToggleButton bt_atras;
+    private javax.swing.JToggleButton bt_cargar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JToggleButton jToggleButton1;
+    private javax.swing.JTextArea txt_texto;
     // End of variables declaration//GEN-END:variables
 }

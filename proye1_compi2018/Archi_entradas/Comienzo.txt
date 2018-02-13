@@ -1,0 +1,11 @@
+<CHTML>
+<ENCABEZADO>
+<CJS ruta = "C:/fichero/fichero_1.cjs";> <FIN-CJS>
+<CJS ruta = "C:/fichero/fichero_1.cjs";> <FIN-CJS>
+<TITULO> USAC- WEB <FIN-TITULO>
+<FIN-ENCABEZADO>
+
+<CUERPO>
+<TEXTO>mundo<FIN-TEXTO>
+<FIN-CUERPO>
+<FIN-CHTML>
