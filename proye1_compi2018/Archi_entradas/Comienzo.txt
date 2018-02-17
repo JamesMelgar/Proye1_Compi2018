@@ -4,8 +4,11 @@
 <CJS ruta = "C:/fichero/fichero_1.cjs";> <FIN-CJS>
 <TITULO> USAC- WEB <FIN-TITULO>
 <FIN-ENCABEZADO>
-
 <CUERPO>
+<IMAGEN click=metodo()> c://proyecto1/clase.gif <FIN-IMAGEN>
 <TEXTO>mundo<FIN-TEXTO>
+<PANEL>
+<TEXTO>mundo<FIN-TEXTO>
+<FIN-PANEL>
 <FIN-CUERPO>
 <FIN-CHTML>

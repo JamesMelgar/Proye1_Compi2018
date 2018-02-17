@@ -32,12 +32,27 @@ public class AnalizadorSintactico_chtml extends java_cup.runtime.lr_parser {
   /** Production table. */
   protected static final short _production_table[][] = 
     unpackFromStrings(new String[] {
-    "\000\022\000\002\002\004\000\002\002\004\000\002\003" +
-    "\004\000\002\003\003\000\002\012\002\000\002\004\005" +
-    "\000\002\013\002\000\002\004\005\000\002\007\004\000" +
-    "\002\007\004\000\002\010\003\000\002\011\003\000\002" +
-    "\011\006\000\002\005\004\000\002\005\003\000\002\006" +
-    "\011\000\002\006\011\000\002\006\003" });
+    "\000\102\000\002\002\004\000\002\002\006\000\002\003" +
+    "\004\000\002\003\004\000\002\034\002\000\002\004\007" +
+    "\000\002\035\002\000\002\004\007\000\002\013\010\000" +
+    "\002\015\004\000\002\015\003\000\002\005\004\000\002" +
+    "\005\004\000\002\006\013\000\002\006\013\000\002\006" +
+    "\003\000\002\021\011\000\002\022\011\000\002\007\004" +
+    "\000\002\007\005\000\002\007\005\000\002\010\011\000" +
+    "\002\010\011\000\002\010\006\000\002\010\003\000\002" +
+    "\010\003\000\002\010\003\000\002\010\003\000\002\010" +
+    "\003\000\002\010\003\000\002\010\003\000\002\010\011" +
+    "\000\002\010\004\000\002\012\004\000\002\012\002\000" +
+    "\002\011\006\000\002\011\006\000\002\011\006\000\002" +
+    "\011\006\000\002\011\006\000\002\011\006\000\002\011" +
+    "\006\000\002\011\006\000\002\011\006\000\002\011\006" +
+    "\000\002\016\007\000\002\017\004\000\002\017\003\000" +
+    "\002\024\007\000\002\020\004\000\002\020\003\000\002" +
+    "\025\007\000\002\025\007\000\002\023\004\000\002\023" +
+    "\004\000\002\023\003\000\002\023\004\000\002\026\010" +
+    "\000\002\014\004\000\002\014\003\000\002\032\010\000" +
+    "\002\027\006\000\002\030\004\000\002\030\005\000\002" +
+    "\031\011\000\002\033\004" });
 
   /** Access to production table. */
   public short[][] production_table() {return _production_table;}
@@ -45,30 +60,216 @@ public class AnalizadorSintactico_chtml extends java_cup.runtime.lr_parser {
   /** Parse-action table. */
   protected static final short[][] _action_table = 
     unpackFromStrings(new String[] {
-    "\000\047\000\004\004\004\001\002\000\010\005\ufffe\006" +
-    "\ufffe\010\ufffe\001\002\000\010\005\013\006\014\010\012" +
-    "\001\002\000\004\002\007\001\002\000\004\002\001\001" +
-    "\002\000\012\011\ufffd\012\034\014\033\024\031\001\002" +
-    "\000\010\005\uffff\006\uffff\010\uffff\001\002\000\012\011" +
-    "\ufff3\012\ufff3\014\ufff3\024\ufff3\001\002\000\004\002\000" +
-    "\001\002\000\006\017\024\026\023\001\002\000\006\007" +
-    "\ufffb\025\016\001\002\000\006\007\ufff7\025\ufff7\001\002" +
-    "\000\006\007\ufff9\025\ufff9\001\002\000\004\007\021\001" +
-    "\002\000\010\005\ufffa\006\ufffa\010\ufffa\001\002\000\006" +
-    "\007\ufff8\025\ufff8\001\002\000\004\021\025\001\002\000" +
-    "\006\007\ufff6\025\ufff6\001\002\000\004\022\026\001\002" +
-    "\000\004\017\027\001\002\000\006\007\ufff5\025\ufff5\001" +
-    "\002\000\012\011\ufff4\012\ufff4\014\ufff4\024\ufff4\001\002" +
-    "\000\012\011\ufff0\012\ufff0\014\ufff0\024\ufff0\001\002\000" +
-    "\004\011\051\001\002\000\004\020\043\001\002\000\004" +
-    "\020\035\001\002\000\004\021\036\001\002\000\004\022" +
-    "\037\001\002\000\004\016\040\001\002\000\004\017\041" +
-    "\001\002\000\004\013\042\001\002\000\012\011\ufff2\012" +
-    "\ufff2\014\ufff2\024\ufff2\001\002\000\004\021\044\001\002" +
-    "\000\004\022\045\001\002\000\004\016\046\001\002\000" +
-    "\004\017\047\001\002\000\004\015\050\001\002\000\012" +
-    "\011\ufff1\012\ufff1\014\ufff1\024\ufff1\001\002\000\010\005" +
-    "\ufffc\006\ufffc\010\ufffc\001\002" });
+    "\000\322\000\004\004\004\001\002\000\004\017\324\001" +
+    "\002\000\012\006\015\010\014\030\010\033\011\001\002" +
+    "\000\004\002\007\001\002\000\004\002\001\001\002\000" +
+    "\030\017\uffdf\020\uffdf\025\uffdf\034\uffdf\035\uffdf\036\uffdf" +
+    "\037\uffdf\040\uffdf\041\uffdf\043\uffdf\063\uffdf\001\002\000" +
+    "\004\005\320\001\002\000\012\012\264\014\263\033\ufffd" +
+    "\044\261\001\002\000\012\006\uffff\010\uffff\030\uffff\033" +
+    "\uffff\001\002\000\004\017\256\001\002\000\030\017\uffdf" +
+    "\020\uffdf\025\uffdf\034\uffdf\035\uffdf\036\uffdf\037\uffdf\040" +
+    "\uffdf\041\uffdf\043\uffdf\063\uffdf\001\002\000\036\006\015" +
+    "\023\020\026\034\030\010\032\035\033\ufffb\046\043\050" +
+    "\027\052\031\054\044\061\037\067\033\072\024\074\026" +
+    "\001\002\000\036\006\uffe8\023\uffe8\026\uffe8\030\uffe8\032" +
+    "\uffe8\033\uffe8\046\uffe8\050\uffe8\052\uffe8\054\uffe8\061\uffe8" +
+    "\067\uffe8\072\uffe8\074\uffe8\001\002\000\030\017\uffdf\020" +
+    "\uffdf\025\uffdf\034\uffdf\035\uffdf\036\uffdf\037\uffdf\040\uffdf" +
+    "\041\uffdf\043\uffdf\063\uffdf\001\002\000\036\006\015\023" +
+    "\020\026\034\030\010\032\035\033\243\046\043\050\027" +
+    "\052\031\054\044\061\037\067\033\072\024\074\026\001" +
+    "\002\000\036\006\uffe7\023\uffe7\026\uffe7\030\uffe7\032\uffe7" +
+    "\033\uffe7\046\uffe7\050\uffe7\052\uffe7\054\uffe7\061\uffe7\067" +
+    "\uffe7\072\uffe7\074\uffe7\001\002\000\036\006\uffe6\023\uffe6" +
+    "\026\uffe6\030\uffe6\032\uffe6\033\uffe6\046\uffe6\050\uffe6\052" +
+    "\uffe6\054\uffe6\061\uffe6\067\uffe6\072\uffe6\074\uffe6\001\002" +
+    "\000\030\017\uffdf\020\uffdf\025\uffdf\034\uffdf\035\uffdf\036" +
+    "\uffdf\037\uffdf\040\uffdf\041\uffdf\043\uffdf\063\uffdf\001\002" +
+    "\000\006\033\223\077\225\001\002\000\004\017\165\001" +
+    "\002\000\004\017\164\001\002\000\004\033\161\001\002" +
+    "\000\030\017\uffdf\020\uffdf\025\uffdf\034\uffdf\035\uffdf\036" +
+    "\uffdf\037\uffdf\040\uffdf\041\uffdf\043\uffdf\063\uffdf\001\002" +
+    "\000\036\006\uffef\023\uffef\026\uffef\030\uffef\032\uffef\033" +
+    "\uffef\046\uffef\050\uffef\052\uffef\054\uffef\061\uffef\067\uffef" +
+    "\072\uffef\074\uffef\001\002\000\030\017\uffdf\020\uffdf\025" +
+    "\uffdf\034\uffdf\035\uffdf\036\uffdf\037\uffdf\040\uffdf\041\uffdf" +
+    "\043\uffdf\063\uffdf\001\002\000\030\017\uffdf\020\uffdf\025" +
+    "\uffdf\034\uffdf\035\uffdf\036\uffdf\037\uffdf\040\uffdf\041\uffdf" +
+    "\043\uffdf\063\uffdf\001\002\000\004\017\136\001\002\000" +
+    "\036\006\uffe9\023\uffe9\026\uffe9\030\uffe9\032\uffe9\033\uffe9" +
+    "\046\uffe9\050\uffe9\052\uffe9\054\uffe9\061\uffe9\067\uffe9\072" +
+    "\uffe9\074\uffe9\001\002\000\030\017\uffdf\020\uffdf\025\uffdf" +
+    "\034\uffdf\035\uffdf\036\uffdf\037\uffdf\040\uffdf\041\uffdf\043" +
+    "\uffdf\063\uffdf\001\002\000\036\006\uffe5\023\uffe5\026\uffe5" +
+    "\030\uffe5\032\uffe5\033\uffe5\046\uffe5\050\uffe5\052\uffe5\054" +
+    "\uffe5\061\uffe5\067\uffe5\072\uffe5\074\uffe5\001\002\000\036" +
+    "\006\uffe3\023\uffe3\026\uffe3\030\uffe3\032\uffe3\033\uffe3\046" +
+    "\uffe3\050\uffe3\052\uffe3\054\uffe3\061\uffe3\067\uffe3\072\uffe3" +
+    "\074\uffe3\001\002\000\036\006\uffe4\023\uffe4\026\uffe4\030" +
+    "\uffe4\032\uffe4\033\uffe4\046\uffe4\050\uffe4\052\uffe4\054\uffe4" +
+    "\061\uffe4\067\uffe4\072\uffe4\074\uffe4\001\002\000\030\017" +
+    "\uffdf\020\uffdf\025\uffdf\034\uffdf\035\uffdf\036\uffdf\037\uffdf" +
+    "\040\uffdf\041\uffdf\043\uffdf\063\uffdf\001\002\000\030\017" +
+    "\uffdf\020\uffdf\025\uffdf\034\uffdf\035\uffdf\036\uffdf\037\uffdf" +
+    "\040\uffdf\041\uffdf\043\uffdf\063\uffdf\001\002\000\030\017" +
+    "\054\020\047\025\052\034\046\035\057\036\061\037\051" +
+    "\040\056\041\055\043\060\063\050\001\002\000\004\021" +
+    "\121\001\002\000\004\021\116\001\002\000\004\021\113" +
+    "\001\002\000\004\021\110\001\002\000\004\021\105\001" +
+    "\002\000\030\017\uffe0\020\uffe0\025\uffe0\034\uffe0\035\uffe0" +
+    "\036\uffe0\037\uffe0\040\uffe0\041\uffe0\043\uffe0\063\uffe0\001" +
+    "\002\000\004\071\101\001\002\000\004\021\076\001\002" +
+    "\000\004\021\073\001\002\000\004\021\070\001\002\000" +
+    "\004\021\065\001\002\000\004\021\062\001\002\000\004" +
+    "\022\063\001\002\000\004\016\064\001\002\000\030\017" +
+    "\uffdb\020\uffdb\025\uffdb\034\uffdb\035\uffdb\036\uffdb\037\uffdb" +
+    "\040\uffdb\041\uffdb\043\uffdb\063\uffdb\001\002\000\004\022" +
+    "\066\001\002\000\004\016\067\001\002\000\030\017\uffd7" +
+    "\020\uffd7\025\uffd7\034\uffd7\035\uffd7\036\uffd7\037\uffd7\040" +
+    "\uffd7\041\uffd7\043\uffd7\063\uffd7\001\002\000\004\022\071" +
+    "\001\002\000\004\016\072\001\002\000\030\017\uffdc\020" +
+    "\uffdc\025\uffdc\034\uffdc\035\uffdc\036\uffdc\037\uffdc\040\uffdc" +
+    "\041\uffdc\043\uffdc\063\uffdc\001\002\000\004\022\074\001" +
+    "\002\000\004\016\075\001\002\000\030\017\uffd9\020\uffd9" +
+    "\025\uffd9\034\uffd9\035\uffd9\036\uffd9\037\uffd9\040\uffd9\041" +
+    "\uffd9\043\uffd9\063\uffd9\001\002\000\004\022\077\001\002" +
+    "\000\004\016\100\001\002\000\030\017\uffd8\020\uffd8\025" +
+    "\uffd8\034\uffd8\035\uffd8\036\uffd8\037\uffd8\040\uffd8\041\uffd8" +
+    "\043\uffd8\063\uffd8\001\002\000\004\033\102\001\002\000" +
+    "\004\055\103\001\002\000\004\017\104\001\002\000\036" +
+    "\006\uffe2\023\uffe2\026\uffe2\030\uffe2\032\uffe2\033\uffe2\046" +
+    "\uffe2\050\uffe2\052\uffe2\054\uffe2\061\uffe2\067\uffe2\072\uffe2" +
+    "\074\uffe2\001\002\000\004\022\106\001\002\000\004\017" +
+    "\107\001\002\000\030\017\uffdd\020\uffdd\025\uffdd\034\uffdd" +
+    "\035\uffdd\036\uffdd\037\uffdd\040\uffdd\041\uffdd\043\uffdd\063" +
+    "\uffdd\001\002\000\004\022\111\001\002\000\004\016\112" +
+    "\001\002\000\030\017\uffda\020\uffda\025\uffda\034\uffda\035" +
+    "\uffda\036\uffda\037\uffda\040\uffda\041\uffda\043\uffda\063\uffda" +
+    "\001\002\000\004\022\114\001\002\000\004\016\115\001" +
+    "\002\000\030\017\uffd5\020\uffd5\025\uffd5\034\uffd5\035\uffd5" +
+    "\036\uffd5\037\uffd5\040\uffd5\041\uffd5\043\uffd5\063\uffd5\001" +
+    "\002\000\004\022\117\001\002\000\004\016\120\001\002" +
+    "\000\030\017\uffd6\020\uffd6\025\uffd6\034\uffd6\035\uffd6\036" +
+    "\uffd6\037\uffd6\040\uffd6\041\uffd6\043\uffd6\063\uffd6\001\002" +
+    "\000\004\022\122\001\002\000\004\016\123\001\002\000" +
+    "\030\017\uffde\020\uffde\025\uffde\034\uffde\035\uffde\036\uffde" +
+    "\037\uffde\040\uffde\041\uffde\043\uffde\063\uffde\001\002\000" +
+    "\030\017\125\020\047\025\052\034\046\035\057\036\061" +
+    "\037\051\040\056\041\055\043\060\063\050\001\002\000" +
+    "\006\033\uffc2\077\uffc2\001\002\000\030\017\127\020\047" +
+    "\025\052\034\046\035\057\036\061\037\051\040\056\041" +
+    "\055\043\060\063\050\001\002\000\006\033\130\071\132" +
+    "\001\002\000\006\062\uffc6\073\uffc6\001\002\000\004\062" +
+    "\134\001\002\000\004\033\133\001\002\000\006\062\uffc7" +
+    "\073\uffc7\001\002\000\004\017\135\001\002\000\036\006" +
+    "\uffc8\023\uffc8\026\uffc8\030\uffc8\032\uffc8\033\uffc8\046\uffc8" +
+    "\050\uffc8\052\uffc8\054\uffc8\061\uffc8\067\uffc8\072\uffc8\074" +
+    "\uffc8\001\002\000\036\006\uffe1\023\uffe1\026\uffe1\030\uffe1" +
+    "\032\uffe1\033\uffe1\046\uffe1\050\uffe1\052\uffe1\054\uffe1\061" +
+    "\uffe1\067\uffe1\072\uffe1\074\uffe1\001\002\000\030\017\140" +
+    "\020\047\025\052\034\046\035\057\036\061\037\051\040" +
+    "\056\041\055\043\060\063\050\001\002\000\004\042\141" +
+    "\001\002\000\004\033\142\001\002\000\004\027\143\001" +
+    "\002\000\004\017\144\001\002\000\036\006\ufff1\023\ufff1" +
+    "\026\ufff1\030\ufff1\032\ufff1\033\ufff1\046\ufff1\050\ufff1\052" +
+    "\ufff1\054\ufff1\061\ufff1\067\ufff1\072\ufff1\074\ufff1\001\002" +
+    "\000\030\017\146\020\047\025\052\034\046\035\057\036" +
+    "\061\037\051\040\056\041\055\043\060\063\050\001\002" +
+    "\000\004\022\147\001\002\000\004\033\150\001\002\000" +
+    "\004\070\151\001\002\000\004\017\152\001\002\000\036" +
+    "\006\uffeb\023\uffeb\026\uffeb\030\uffeb\032\uffeb\033\uffeb\046" +
+    "\uffeb\050\uffeb\052\uffeb\054\uffeb\061\uffeb\067\uffeb\072\uffeb" +
+    "\074\uffeb\001\002\000\030\017\154\020\047\025\052\034" +
+    "\046\035\057\036\061\037\051\040\056\041\055\043\060" +
+    "\063\050\001\002\000\004\071\155\001\002\000\004\033" +
+    "\156\001\002\000\004\053\157\001\002\000\004\017\160" +
+    "\001\002\000\036\006\ufff0\023\ufff0\026\ufff0\030\ufff0\032" +
+    "\ufff0\033\ufff0\046\ufff0\050\ufff0\052\ufff0\054\ufff0\061\ufff0" +
+    "\067\ufff0\072\ufff0\074\ufff0\001\002\000\004\007\162\001" +
+    "\002\000\004\017\163\001\002\000\012\006\ufffa\010\ufffa" +
+    "\030\ufffa\033\ufffa\001\002\000\036\006\uffc0\023\uffc0\026" +
+    "\uffc0\030\uffc0\032\uffc0\033\uffc0\046\uffc0\050\uffc0\052\uffc0" +
+    "\054\uffc0\061\uffc0\067\uffc0\072\uffc0\074\uffc0\001\002\000" +
+    "\006\033\uffd2\060\uffd2\001\002\000\006\033\171\060\167" +
+    "\001\002\000\004\017\175\001\002\000\006\033\uffd3\060" +
+    "\uffd3\001\002\000\004\075\172\001\002\000\004\017\173" +
+    "\001\002\000\036\006\uffd4\023\uffd4\026\uffd4\030\uffd4\032" +
+    "\uffd4\033\uffd4\046\uffd4\050\uffd4\052\uffd4\054\uffd4\061\uffd4" +
+    "\067\uffd4\072\uffd4\074\uffd4\001\002\000\010\033\200\056" +
+    "\201\057\176\001\002\000\010\033\uffcf\056\uffcf\057\uffcf" +
+    "\001\002\000\004\017\217\001\002\000\010\033\uffd0\056" +
+    "\uffd0\057\uffd0\001\002\000\004\066\215\001\002\000\004" +
+    "\017\202\001\002\000\012\026\034\033\204\052\031\071" +
+    "\207\001\002\000\004\033\214\001\002\000\006\064\uffca" +
+    "\065\uffca\001\002\000\004\033\213\001\002\000\004\064" +
+    "\211\001\002\000\004\033\210\001\002\000\006\064\uffc9" +
+    "\065\uffc9\001\002\000\004\017\212\001\002\000\010\033" +
+    "\uffcd\056\uffcd\057\uffcd\001\002\000\006\064\uffcb\065\uffcb" +
+    "\001\002\000\006\064\uffcc\065\uffcc\001\002\000\004\017" +
+    "\216\001\002\000\006\033\uffd1\060\uffd1\001\002\000\012" +
+    "\026\034\033\204\052\031\071\207\001\002\000\004\065" +
+    "\221\001\002\000\004\017\222\001\002\000\010\033\uffce" +
+    "\056\uffce\057\uffce\001\002\000\004\047\234\001\002\000" +
+    "\006\033\uffc3\077\uffc3\001\002\000\030\017\uffdf\020\uffdf" +
+    "\025\uffdf\034\uffdf\035\uffdf\036\uffdf\037\uffdf\040\uffdf\041" +
+    "\uffdf\043\uffdf\063\uffdf\001\002\000\030\017\227\020\047" +
+    "\025\052\034\046\035\057\036\061\037\051\040\056\041" +
+    "\055\043\060\063\050\001\002\000\004\071\230\001\002" +
+    "\000\004\033\231\001\002\000\004\076\232\001\002\000" +
+    "\004\017\233\001\002\000\006\033\uffc1\077\uffc1\001\002" +
+    "\000\004\017\235\001\002\000\036\006\uffc4\023\uffc4\026" +
+    "\uffc4\030\uffc4\032\uffc4\033\uffc4\046\uffc4\050\uffc4\052\uffc4" +
+    "\054\uffc4\061\uffc4\067\uffc4\072\uffc4\074\uffc4\001\002\000" +
+    "\030\017\237\020\047\025\052\034\046\035\057\036\061" +
+    "\037\051\040\056\041\055\043\060\063\050\001\002\000" +
+    "\006\033\130\071\132\001\002\000\004\073\241\001\002" +
+    "\000\004\017\242\001\002\000\036\006\uffc5\023\uffc5\026" +
+    "\uffc5\030\uffc5\032\uffc5\033\uffc5\046\uffc5\050\uffc5\052\uffc5" +
+    "\054\uffc5\061\uffc5\067\uffc5\072\uffc5\074\uffc5\001\002\000" +
+    "\004\031\244\001\002\000\004\017\245\001\002\000\036" +
+    "\006\uffea\023\uffea\026\uffea\030\uffea\032\uffea\033\uffea\046" +
+    "\uffea\050\uffea\052\uffea\054\uffea\061\uffea\067\uffea\072\uffea" +
+    "\074\uffea\001\002\000\030\017\247\020\047\025\052\034" +
+    "\046\035\057\036\061\037\051\040\056\041\055\043\060" +
+    "\063\050\001\002\000\004\022\250\001\002\000\004\033" +
+    "\251\001\002\000\004\024\252\001\002\000\004\017\253" +
+    "\001\002\000\036\006\uffec\023\uffec\026\uffec\030\uffec\032" +
+    "\uffec\033\uffec\046\uffec\050\uffec\052\uffec\054\uffec\061\uffec" +
+    "\067\uffec\072\uffec\074\uffec\001\002\000\030\017\255\020" +
+    "\047\025\052\034\046\035\057\036\061\037\051\040\056" +
+    "\041\055\043\060\063\050\001\002\000\036\006\uffee\023" +
+    "\uffee\026\uffee\030\uffee\032\uffee\033\uffee\046\uffee\050\uffee" +
+    "\052\uffee\054\uffee\061\uffee\067\uffee\072\uffee\074\uffee\001" +
+    "\002\000\012\012\ufff5\014\ufff5\033\ufff5\044\ufff5\001\002" +
+    "\000\012\012\ufff6\014\ufff6\033\ufff6\044\ufff6\001\002\000" +
+    "\012\012\ufff2\014\ufff2\033\ufff2\044\ufff2\001\002\000\030" +
+    "\017\uffdf\020\uffdf\025\uffdf\034\uffdf\035\uffdf\036\uffdf\037" +
+    "\uffdf\040\uffdf\041\uffdf\043\uffdf\063\uffdf\001\002\000\004" +
+    "\033\305\001\002\000\004\020\275\001\002\000\004\020" +
+    "\265\001\002\000\004\021\266\001\002\000\004\022\267" +
+    "\001\002\000\004\016\270\001\002\000\004\017\271\001" +
+    "\002\000\004\033\272\001\002\000\004\013\273\001\002" +
+    "\000\004\017\274\001\002\000\012\012\ufff4\014\ufff4\033" +
+    "\ufff4\044\ufff4\001\002\000\004\021\276\001\002\000\004" +
+    "\022\277\001\002\000\004\016\300\001\002\000\004\017" +
+    "\301\001\002\000\004\033\302\001\002\000\004\015\303" +
+    "\001\002\000\004\017\304\001\002\000\012\012\ufff3\014" +
+    "\ufff3\033\ufff3\044\ufff3\001\002\000\004\011\306\001\002" +
+    "\000\004\017\307\001\002\000\012\006\ufffc\010\ufffc\030" +
+    "\ufffc\033\ufffc\001\002\000\030\017\311\020\047\025\052" +
+    "\034\046\035\057\036\061\037\051\040\056\041\055\043" +
+    "\060\063\050\001\002\000\006\033\312\071\313\001\002" +
+    "\000\004\045\ufff7\001\002\000\004\033\317\001\002\000" +
+    "\004\045\315\001\002\000\004\017\316\001\002\000\012" +
+    "\012\ufff9\014\ufff9\033\ufff9\044\ufff9\001\002\000\004\045" +
+    "\ufff8\001\002\000\004\017\321\001\002\000\004\002\000" +
+    "\001\002\000\030\017\323\020\047\025\052\034\046\035" +
+    "\057\036\061\037\051\040\056\041\055\043\060\063\050" +
+    "\001\002\000\036\006\uffed\023\uffed\026\uffed\030\uffed\032" +
+    "\uffed\033\uffed\046\uffed\050\uffed\052\uffed\054\uffed\061\uffed" +
+    "\067\uffed\072\uffed\074\uffed\001\002\000\012\006\ufffe\010" +
+    "\ufffe\030\ufffe\033\ufffe\001\002" });
 
   /** Access to parse-action table. */
   public short[][] action_table() {return _action_table;}
@@ -76,12 +277,24 @@ public class AnalizadorSintactico_chtml extends java_cup.runtime.lr_parser {
   /** <code>reduce_goto</code> table. */
   protected static final short[][] _reduce_table = 
     unpackFromStrings(new String[] {
-    "\000\047\000\006\002\005\003\004\001\001\000\002\001" +
-    "\001\000\010\004\010\005\007\007\014\001\001\000\002" +
-    "\001\001\000\002\001\001\000\006\006\027\012\031\001" +
+    "\000\322\000\006\002\005\003\004\001\001\000\002\001" +
+    "\001\000\010\004\012\005\011\007\015\001\001\000\002" +
+    "\001\001\000\002\001\001\000\004\012\321\001\001\000" +
+    "\002\001\001\000\010\006\256\013\257\034\261\001\001" +
+    "\000\002\001\001\000\002\001\001\000\004\012\253\001" +
+    "\001\000\030\007\020\010\031\016\035\021\016\022\021" +
+    "\026\022\027\037\030\024\032\041\033\040\035\027\001" +
+    "\001\000\002\001\001\000\004\012\245\001\001\000\026" +
+    "\007\020\010\031\016\035\021\016\022\021\026\022\027" +
+    "\037\030\024\032\041\033\040\001\001\000\002\001\001" +
+    "\000\002\001\001\000\004\012\235\001\001\000\004\031" +
+    "\223\001\001\000\004\017\165\001\001\000\002\001\001" +
+    "\000\002\001\001\000\004\012\152\001\001\000\002\001" +
+    "\001\000\004\012\144\001\001\000\004\012\136\001\001" +
+    "\000\002\001\001\000\002\001\001\000\004\012\125\001" +
     "\001\000\002\001\001\000\002\001\001\000\002\001\001" +
-    "\000\004\011\021\001\001\000\006\010\016\013\017\001" +
-    "\001\000\002\001\001\000\002\001\001\000\002\001\001" +
+    "\000\004\012\123\001\001\000\004\012\044\001\001\000" +
+    "\004\011\052\001\001\000\002\001\001\000\002\001\001" +
     "\000\002\001\001\000\002\001\001\000\002\001\001\000" +
     "\002\001\001\000\002\001\001\000\002\001\001\000\002" +
     "\001\001\000\002\001\001\000\002\001\001\000\002\001" +
@@ -89,7 +302,57 @@ public class AnalizadorSintactico_chtml extends java_cup.runtime.lr_parser {
     "\000\002\001\001\000\002\001\001\000\002\001\001\000" +
     "\002\001\001\000\002\001\001\000\002\001\001\000\002" +
     "\001\001\000\002\001\001\000\002\001\001\000\002\001" +
-    "\001\000\002\001\001\000\002\001\001" });
+    "\001\000\002\001\001\000\002\001\001\000\002\001\001" +
+    "\000\002\001\001\000\002\001\001\000\002\001\001\000" +
+    "\002\001\001\000\002\001\001\000\002\001\001\000\002" +
+    "\001\001\000\002\001\001\000\002\001\001\000\002\001" +
+    "\001\000\002\001\001\000\002\001\001\000\002\001\001" +
+    "\000\002\001\001\000\002\001\001\000\002\001\001\000" +
+    "\002\001\001\000\002\001\001\000\004\011\052\001\001" +
+    "\000\002\001\001\000\004\011\052\001\001\000\004\014" +
+    "\130\001\001\000\002\001\001\000\002\001\001\000\002" +
+    "\001\001\000\002\001\001\000\002\001\001\000\002\001" +
+    "\001\000\002\001\001\000\004\011\052\001\001\000\002" +
+    "\001\001\000\002\001\001\000\002\001\001\000\002\001" +
+    "\001\000\002\001\001\000\004\011\052\001\001\000\002" +
+    "\001\001\000\002\001\001\000\002\001\001\000\002\001" +
+    "\001\000\002\001\001\000\004\011\052\001\001\000\002" +
+    "\001\001\000\002\001\001\000\002\001\001\000\002\001" +
+    "\001\000\002\001\001\000\002\001\001\000\002\001\001" +
+    "\000\002\001\001\000\002\001\001\000\002\001\001\000" +
+    "\004\024\167\001\001\000\004\020\173\001\001\000\002" +
+    "\001\001\000\002\001\001\000\002\001\001\000\002\001" +
+    "\001\000\004\025\176\001\001\000\002\001\001\000\002" +
+    "\001\001\000\002\001\001\000\002\001\001\000\002\001" +
+    "\001\000\010\021\204\022\202\023\205\001\001\000\002" +
+    "\001\001\000\002\001\001\000\002\001\001\000\002\001" +
+    "\001\000\002\001\001\000\002\001\001\000\002\001\001" +
+    "\000\002\001\001\000\002\001\001\000\002\001\001\000" +
+    "\002\001\001\000\002\001\001\000\010\021\204\022\202" +
+    "\023\217\001\001\000\002\001\001\000\002\001\001\000" +
+    "\002\001\001\000\002\001\001\000\002\001\001\000\004" +
+    "\012\225\001\001\000\004\011\052\001\001\000\002\001" +
+    "\001\000\002\001\001\000\002\001\001\000\002\001\001" +
+    "\000\002\001\001\000\002\001\001\000\002\001\001\000" +
+    "\004\011\052\001\001\000\004\014\237\001\001\000\002" +
+    "\001\001\000\002\001\001\000\002\001\001\000\002\001" +
+    "\001\000\002\001\001\000\002\001\001\000\004\011\052" +
+    "\001\001\000\002\001\001\000\002\001\001\000\002\001" +
+    "\001\000\002\001\001\000\002\001\001\000\004\011\052" +
+    "\001\001\000\002\001\001\000\002\001\001\000\002\001" +
+    "\001\000\002\001\001\000\004\012\307\001\001\000\002" +
+    "\001\001\000\002\001\001\000\002\001\001\000\002\001" +
+    "\001\000\002\001\001\000\002\001\001\000\002\001\001" +
+    "\000\002\001\001\000\002\001\001\000\002\001\001\000" +
+    "\002\001\001\000\002\001\001\000\002\001\001\000\002" +
+    "\001\001\000\002\001\001\000\002\001\001\000\002\001" +
+    "\001\000\002\001\001\000\002\001\001\000\002\001\001" +
+    "\000\002\001\001\000\002\001\001\000\004\011\052\001" +
+    "\001\000\004\015\313\001\001\000\002\001\001\000\002" +
+    "\001\001\000\002\001\001\000\002\001\001\000\002\001" +
+    "\001\000\002\001\001\000\002\001\001\000\002\001\001" +
+    "\000\004\011\052\001\001\000\002\001\001\000\002\001" +
+    "\001" });
 
   /** Access to <code>reduce_goto</code> table. */
   public short[][] reduce_table() {return _reduce_table;}
@@ -185,17 +448,17 @@ class CUP$AnalizadorSintactico_chtml$actions {
           return CUP$AnalizadorSintactico_chtml$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 1: // INICIO ::= SENTENCIAS htmlf 
+          case 1: // INICIO ::= SENTENCIAS abierto htmlf cierre 
             {
               Object RESULT =null;
-		int stsleft = ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-1)).left;
-		int stsright = ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-1)).right;
-		Object sts = (Object)((java_cup.runtime.Symbol) CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-1)).value;
+		int stsleft = ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-3)).left;
+		int stsright = ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-3)).right;
+		Object sts = (Object)((java_cup.runtime.Symbol) CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-3)).value;
 		 
-        parser.padre = (Nodo) sts;
-        System.out.println("DOCUMENTO OK"); 
-        
-              CUP$AnalizadorSintactico_chtml$result = parser.getSymbolFactory().newSymbol("INICIO",0, ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-1)), ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.peek()), RESULT);
+            parser.padre = (Nodo) sts;
+            System.out.println("DOCUMENTO OK"); 
+          
+              CUP$AnalizadorSintactico_chtml$result = parser.getSymbolFactory().newSymbol("INICIO",0, ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-3)), ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.peek()), RESULT);
             }
           return CUP$AnalizadorSintactico_chtml$result;
 
@@ -220,15 +483,15 @@ class CUP$AnalizadorSintactico_chtml$actions {
           return CUP$AnalizadorSintactico_chtml$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 3: // SENTENCIAS ::= htmli 
+          case 3: // SENTENCIAS ::= htmli cierre 
             {
               Object RESULT =null;
 		
                 Nodo tmp = new Nodo("INICIO");
-		tmp.setNumNodo(parser.contador++); 
-		RESULT=tmp;
+                tmp.setNumNodo(parser.contador++); 
+                RESULT=tmp;
             
-              CUP$AnalizadorSintactico_chtml$result = parser.getSymbolFactory().newSymbol("SENTENCIAS",1, ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.peek()), ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.peek()), RESULT);
+              CUP$AnalizadorSintactico_chtml$result = parser.getSymbolFactory().newSymbol("SENTENCIAS",1, ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-1)), ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.peek()), RESULT);
             }
           return CUP$AnalizadorSintactico_chtml$result;
 
@@ -241,22 +504,22 @@ class CUP$AnalizadorSintactico_chtml$actions {
 		Object tmp = (Object)((java_cup.runtime.Symbol) CUP$AnalizadorSintactico_chtml$stack.peek()).value;
  
             RESULT=tmp;
-    
-              CUP$AnalizadorSintactico_chtml$result = parser.getSymbolFactory().newSymbol("NT$0",8, ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.peek()), RESULT);
+          
+              CUP$AnalizadorSintactico_chtml$result = parser.getSymbolFactory().newSymbol("NT$0",26, ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.peek()), RESULT);
             }
           return CUP$AnalizadorSintactico_chtml$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 5: // MEDIO ::= ENCABEZADO NT$0 encabezadof 
+          case 5: // MEDIO ::= ENCABEZADO NT$0 abierto encabezadof cierre 
             {
               Object RESULT =null;
               // propagate RESULT from NT$0
-                RESULT = (Object) ((java_cup.runtime.Symbol) CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-1)).value;
-		int tmpleft = ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-2)).left;
-		int tmpright = ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-2)).right;
-		Object tmp = (Object)((java_cup.runtime.Symbol) CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-2)).value;
+                RESULT = (Object) ((java_cup.runtime.Symbol) CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-3)).value;
+		int tmpleft = ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-4)).left;
+		int tmpright = ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-4)).right;
+		Object tmp = (Object)((java_cup.runtime.Symbol) CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-4)).value;
 
-              CUP$AnalizadorSintactico_chtml$result = parser.getSymbolFactory().newSymbol("MEDIO",2, ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-2)), ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.peek()), RESULT);
+              CUP$AnalizadorSintactico_chtml$result = parser.getSymbolFactory().newSymbol("MEDIO",2, ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-4)), ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.peek()), RESULT);
             }
           return CUP$AnalizadorSintactico_chtml$result;
 
@@ -270,110 +533,78 @@ class CUP$AnalizadorSintactico_chtml$actions {
  
             RESULT=tmp;
         
-              CUP$AnalizadorSintactico_chtml$result = parser.getSymbolFactory().newSymbol("NT$1",9, ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.peek()), RESULT);
+              CUP$AnalizadorSintactico_chtml$result = parser.getSymbolFactory().newSymbol("NT$1",27, ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.peek()), RESULT);
             }
           return CUP$AnalizadorSintactico_chtml$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 7: // MEDIO ::= CUERPO NT$1 cuerpof 
+          case 7: // MEDIO ::= CUERPO NT$1 abierto cuerpof cierre 
             {
               Object RESULT =null;
               // propagate RESULT from NT$1
-                RESULT = (Object) ((java_cup.runtime.Symbol) CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-1)).value;
-		int tmpleft = ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-2)).left;
-		int tmpright = ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-2)).right;
-		Object tmp = (Object)((java_cup.runtime.Symbol) CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-2)).value;
+                RESULT = (Object) ((java_cup.runtime.Symbol) CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-3)).value;
+		int tmpleft = ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-4)).left;
+		int tmpright = ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-4)).right;
+		Object tmp = (Object)((java_cup.runtime.Symbol) CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-4)).value;
 
-              CUP$AnalizadorSintactico_chtml$result = parser.getSymbolFactory().newSymbol("MEDIO",2, ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-2)), ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.peek()), RESULT);
+              CUP$AnalizadorSintactico_chtml$result = parser.getSymbolFactory().newSymbol("MEDIO",2, ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-4)), ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.peek()), RESULT);
             }
           return CUP$AnalizadorSintactico_chtml$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 8: // CUERPO ::= CUERPO INT_CUERPO 
+          case 8: // TITULO ::= tituloi COMPLEMETO cierre INTERNO_TITULO titulof cierre 
             {
               Object RESULT =null;
-		int encleft = ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-1)).left;
-		int encright = ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-1)).right;
-		Object enc = (Object)((java_cup.runtime.Symbol) CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-1)).value;
-		int incleft = ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.peek()).left;
-		int incright = ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.peek()).right;
-		Object inc = (Object)((java_cup.runtime.Symbol) CUP$AnalizadorSintactico_chtml$stack.peek()).value;
+		int compleft = ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-4)).left;
+		int compright = ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-4)).right;
+		Object comp = (Object)((java_cup.runtime.Symbol) CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-4)).value;
+		int conleft = ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-2)).left;
+		int conright = ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-2)).right;
+		Object con = (Object)((java_cup.runtime.Symbol) CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-2)).value;
 		 
-               Nodo temp;
-               temp = (Nodo) enc;
-               temp.addHijo((Nodo)inc);
-               RESULT=temp;
-           
-              CUP$AnalizadorSintactico_chtml$result = parser.getSymbolFactory().newSymbol("CUERPO",5, ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-1)), ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.peek()), RESULT);
+                  Nodo tmp = new Nodo("TITULO");
+                  tmp.setNumNodo(parser.contador++); 
+                  tmp.addHijo((Nodo)comp);
+                  tmp.addHijo((Nodo)con);               
+                  RESULT=tmp;
+          
+              CUP$AnalizadorSintactico_chtml$result = parser.getSymbolFactory().newSymbol("TITULO",9, ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-5)), ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.peek()), RESULT);
             }
           return CUP$AnalizadorSintactico_chtml$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 9: // CUERPO ::= cuerpoi FON_CUERPO 
-            {
-              Object RESULT =null;
-		int tmpleft = ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.peek()).left;
-		int tmpright = ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.peek()).right;
-		Object tmp = (Object)((java_cup.runtime.Symbol) CUP$AnalizadorSintactico_chtml$stack.peek()).value;
-		 
-            RESULT=tmp; 
-              CUP$AnalizadorSintactico_chtml$result = parser.getSymbolFactory().newSymbol("CUERPO",5, ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-1)), ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.peek()), RESULT);
-            }
-          return CUP$AnalizadorSintactico_chtml$result;
-
-          /*. . . . . . . . . . . . . . . . . . . .*/
-          case 10: // INT_CUERPO ::= texto 
-            {
-              Object RESULT =null;
-		int ileft = ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.peek()).left;
-		int iright = ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.peek()).right;
-		Object i = (Object)((java_cup.runtime.Symbol) CUP$AnalizadorSintactico_chtml$stack.peek()).value;
-		
-                    Nodo tmp = new Nodo("texto");
-                    String str = i.toString();
-                    String ncadena=str.substring(7,str.length()-11);
-                    tmp.setValor(ncadena);
-                    tmp.setNumNodo(parser.contador++);
-                    RESULT=tmp; 
-              CUP$AnalizadorSintactico_chtml$result = parser.getSymbolFactory().newSymbol("INT_CUERPO",6, ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.peek()), ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.peek()), RESULT);
-            }
-          return CUP$AnalizadorSintactico_chtml$result;
-
-          /*. . . . . . . . . . . . . . . . . . . .*/
-          case 11: // FON_CUERPO ::= cierre 
-            {
-              Object RESULT =null;
-		
-                     Nodo tmp = new Nodo("Cuerpo");
-                     tmp.setValor("vacio");
-                     tmp.setNumNodo(parser.contador++);
-                     RESULT=tmp;
-               
-              CUP$AnalizadorSintactico_chtml$result = parser.getSymbolFactory().newSymbol("FON_CUERPO",7, ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.peek()), ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.peek()), RESULT);
-            }
-          return CUP$AnalizadorSintactico_chtml$result;
-
-          /*. . . . . . . . . . . . . . . . . . . .*/
-          case 12: // FON_CUERPO ::= fondo igual cadena cierre 
+          case 9: // INTERNO_TITULO ::= palabra abierto 
             {
               Object RESULT =null;
 		int ileft = ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-1)).left;
 		int iright = ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-1)).right;
 		Object i = (Object)((java_cup.runtime.Symbol) CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-1)).value;
-		
-                     Nodo tmp = new Nodo("Cuerpo");
-                    String str = i.toString();
-                    String ncadena=str.substring(1,str.length()-1);
-                    tmp.setValor(ncadena);
-                    tmp.setNumNodo(parser.contador++);
-                    RESULT=tmp;
-               
-              CUP$AnalizadorSintactico_chtml$result = parser.getSymbolFactory().newSymbol("FON_CUERPO",7, ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-3)), ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.peek()), RESULT);
+		  
+                       Nodo tmp = new Nodo("CONTENIDO");
+                       tmp.setNumNodo(parser.contador++); 
+                       tmp.setValor(i.toString());
+                       RESULT=tmp;
+                  
+              CUP$AnalizadorSintactico_chtml$result = parser.getSymbolFactory().newSymbol("INTERNO_TITULO",11, ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-1)), ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.peek()), RESULT);
             }
           return CUP$AnalizadorSintactico_chtml$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 13: // ENCABEZADO ::= ENCABEZADO INT_ENCABEZADO 
+          case 10: // INTERNO_TITULO ::= abierto 
+            {
+              Object RESULT =null;
+		  
+                       Nodo tmp = new Nodo("CONTENIDO");
+                       tmp.setNumNodo(parser.contador++); 
+                       tmp.setValor(null);
+                       RESULT=tmp;
+                     
+              CUP$AnalizadorSintactico_chtml$result = parser.getSymbolFactory().newSymbol("INTERNO_TITULO",11, ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.peek()), ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.peek()), RESULT);
+            }
+          return CUP$AnalizadorSintactico_chtml$result;
+
+          /*. . . . . . . . . . . . . . . . . . . .*/
+          case 11: // ENCABEZADO ::= ENCABEZADO INT_ENCABEZADO 
             {
               Object RESULT =null;
 		int encleft = ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-1)).left;
@@ -393,7 +624,7 @@ class CUP$AnalizadorSintactico_chtml$actions {
           return CUP$AnalizadorSintactico_chtml$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 14: // ENCABEZADO ::= encabezadoi 
+          case 12: // ENCABEZADO ::= encabezadoi cierre 
             {
               Object RESULT =null;
 		 
@@ -401,17 +632,17 @@ class CUP$AnalizadorSintactico_chtml$actions {
                     tmp.setNumNodo(parser.contador++);
                     RESULT=tmp;
               
-              CUP$AnalizadorSintactico_chtml$result = parser.getSymbolFactory().newSymbol("ENCABEZADO",3, ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.peek()), ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.peek()), RESULT);
+              CUP$AnalizadorSintactico_chtml$result = parser.getSymbolFactory().newSymbol("ENCABEZADO",3, ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-1)), ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.peek()), RESULT);
             }
           return CUP$AnalizadorSintactico_chtml$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 15: // INT_ENCABEZADO ::= cjsi ruta igual cadena ptc cierre cjsf 
+          case 13: // INT_ENCABEZADO ::= cjsi ruta igual cadena ptc cierre abierto cjsf cierre 
             {
               Object RESULT =null;
-		int ileft = ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-3)).left;
-		int iright = ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-3)).right;
-		Object i = (Object)((java_cup.runtime.Symbol) CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-3)).value;
+		int ileft = ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-5)).left;
+		int iright = ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-5)).right;
+		Object i = (Object)((java_cup.runtime.Symbol) CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-5)).value;
 		 
                     Nodo tmp = new Nodo("cjsi");
                     String str = i.toString();
@@ -420,17 +651,17 @@ class CUP$AnalizadorSintactico_chtml$actions {
                     tmp.setNumNodo(parser.contador++);
                     RESULT=tmp;
               
-              CUP$AnalizadorSintactico_chtml$result = parser.getSymbolFactory().newSymbol("INT_ENCABEZADO",4, ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-6)), ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.peek()), RESULT);
+              CUP$AnalizadorSintactico_chtml$result = parser.getSymbolFactory().newSymbol("INT_ENCABEZADO",4, ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-8)), ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.peek()), RESULT);
             }
           return CUP$AnalizadorSintactico_chtml$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 16: // INT_ENCABEZADO ::= ccssi ruta igual cadena ptc cierre ccssf 
+          case 14: // INT_ENCABEZADO ::= ccssi ruta igual cadena ptc cierre abierto ccssf cierre 
             {
               Object RESULT =null;
-		int ileft = ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-3)).left;
-		int iright = ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-3)).right;
-		Object i = (Object)((java_cup.runtime.Symbol) CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-3)).value;
+		int ileft = ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-5)).left;
+		int iright = ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-5)).right;
+		Object i = (Object)((java_cup.runtime.Symbol) CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-5)).value;
 		 
                     Nodo tmp = new Nodo("ccss");
                     String str = i.toString();
@@ -439,24 +670,879 @@ class CUP$AnalizadorSintactico_chtml$actions {
                     tmp.setNumNodo(parser.contador++);
                     RESULT=tmp;
               
-              CUP$AnalizadorSintactico_chtml$result = parser.getSymbolFactory().newSymbol("INT_ENCABEZADO",4, ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-6)), ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.peek()), RESULT);
+              CUP$AnalizadorSintactico_chtml$result = parser.getSymbolFactory().newSymbol("INT_ENCABEZADO",4, ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-8)), ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.peek()), RESULT);
             }
           return CUP$AnalizadorSintactico_chtml$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 17: // INT_ENCABEZADO ::= titulo 
+          case 15: // INT_ENCABEZADO ::= TITULO 
             {
               Object RESULT =null;
-		int ileft = ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.peek()).left;
-		int iright = ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.peek()).right;
-		Object i = (Object)((java_cup.runtime.Symbol) CUP$AnalizadorSintactico_chtml$stack.peek()).value;
-		 Nodo tmp = new Nodo("titulo");
+		int tmpleft = ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.peek()).left;
+		int tmpright = ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.peek()).right;
+		Object tmp = (Object)((java_cup.runtime.Symbol) CUP$AnalizadorSintactico_chtml$stack.peek()).value;
+		
+                    RESULT=tmp; 
+              
+              CUP$AnalizadorSintactico_chtml$result = parser.getSymbolFactory().newSymbol("INT_ENCABEZADO",4, ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.peek()), ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.peek()), RESULT);
+            }
+          return CUP$AnalizadorSintactico_chtml$result;
+
+          /*. . . . . . . . . . . . . . . . . . . .*/
+          case 16: // IMAGEN ::= imageni COMPLEMETO cierre path abierto imagenf cierre 
+            {
+              Object RESULT =null;
+		int compleft = ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-5)).left;
+		int compright = ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-5)).right;
+		Object comp = (Object)((java_cup.runtime.Symbol) CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-5)).value;
+		int ileft = ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-3)).left;
+		int iright = ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-3)).right;
+		Object i = (Object)((java_cup.runtime.Symbol) CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-3)).value;
+		 
+                    Nodo tmp = new Nodo("imagen");
                     String str = i.toString();
-                    String ncadena=str.substring(8,str.length()-12);
+                    tmp.setValor(str);
+                    tmp.setNumNodo(parser.contador++);
+                    tmp.addHijo((Nodo)comp);
+                    RESULT=tmp; 
+           
+              CUP$AnalizadorSintactico_chtml$result = parser.getSymbolFactory().newSymbol("IMAGEN",15, ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-6)), ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.peek()), RESULT);
+            }
+          return CUP$AnalizadorSintactico_chtml$result;
+
+          /*. . . . . . . . . . . . . . . . . . . .*/
+          case 17: // BOTON ::= botoni COMPLEMETO cierre palabra abierto botonf cierre 
+            {
+              Object RESULT =null;
+		int compleft = ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-5)).left;
+		int compright = ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-5)).right;
+		Object comp = (Object)((java_cup.runtime.Symbol) CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-5)).value;
+		int ileft = ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-3)).left;
+		int iright = ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-3)).right;
+		Object i = (Object)((java_cup.runtime.Symbol) CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-3)).value;
+		 
+                    Nodo tmp = new Nodo("boton");
+                    String str = i.toString();
+                    tmp.setValor(str);
+                    tmp.setNumNodo(parser.contador++);
+                    tmp.addHijo((Nodo)comp);
+                    RESULT=tmp; 
+              
+              CUP$AnalizadorSintactico_chtml$result = parser.getSymbolFactory().newSymbol("BOTON",16, ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-6)), ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.peek()), RESULT);
+            }
+          return CUP$AnalizadorSintactico_chtml$result;
+
+          /*. . . . . . . . . . . . . . . . . . . .*/
+          case 18: // CUERPO ::= CUERPO INT_CUERPO 
+            {
+              Object RESULT =null;
+		int encleft = ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-1)).left;
+		int encright = ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-1)).right;
+		Object enc = (Object)((java_cup.runtime.Symbol) CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-1)).value;
+		int incleft = ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.peek()).left;
+		int incright = ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.peek()).right;
+		Object inc = (Object)((java_cup.runtime.Symbol) CUP$AnalizadorSintactico_chtml$stack.peek()).value;
+		 
+               Nodo temp;
+               temp = (Nodo) enc;
+               temp.addHijo((Nodo)inc);
+               RESULT=temp;
+        
+              CUP$AnalizadorSintactico_chtml$result = parser.getSymbolFactory().newSymbol("CUERPO",5, ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-1)), ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.peek()), RESULT);
+            }
+          return CUP$AnalizadorSintactico_chtml$result;
+
+          /*. . . . . . . . . . . . . . . . . . . .*/
+          case 19: // CUERPO ::= cuerpoi COMPLEMETO cierre 
+            {
+              Object RESULT =null;
+		int tmpleft = ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-1)).left;
+		int tmpright = ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-1)).right;
+		Object tmp = (Object)((java_cup.runtime.Symbol) CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-1)).value;
+		 
+            Nodo temp = new Nodo("CUERPO");
+            temp.addHijo((Nodo)tmp);
+            RESULT=temp; 
+        
+              CUP$AnalizadorSintactico_chtml$result = parser.getSymbolFactory().newSymbol("CUERPO",5, ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-2)), ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.peek()), RESULT);
+            }
+          return CUP$AnalizadorSintactico_chtml$result;
+
+          /*. . . . . . . . . . . . . . . . . . . .*/
+          case 20: // CUERPO ::= paneli COMPLEMETO cierre 
+            {
+              Object RESULT =null;
+		int tmpleft = ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-1)).left;
+		int tmpright = ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-1)).right;
+		Object tmp = (Object)((java_cup.runtime.Symbol) CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-1)).value;
+		 
+            Nodo temp = new Nodo("PANEL");
+            temp.addHijo((Nodo)tmp);
+            RESULT=temp; 
+        
+              CUP$AnalizadorSintactico_chtml$result = parser.getSymbolFactory().newSymbol("CUERPO",5, ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-2)), ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.peek()), RESULT);
+            }
+          return CUP$AnalizadorSintactico_chtml$result;
+
+          /*. . . . . . . . . . . . . . . . . . . .*/
+          case 21: // INT_CUERPO ::= textoi COMPLEMETO cierre cadena abierto textof cierre 
+            {
+              Object RESULT =null;
+		int compleft = ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-5)).left;
+		int compright = ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-5)).right;
+		Object comp = (Object)((java_cup.runtime.Symbol) CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-5)).value;
+		int ileft = ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-3)).left;
+		int iright = ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-3)).right;
+		Object i = (Object)((java_cup.runtime.Symbol) CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-3)).value;
+		
+                    Nodo tmp = new Nodo("TEXTO");
+                    String str = i.toString();
+                    String ncadena=str.substring(1,str.length()-1);
+                    tmp.setValor(ncadena);
+                    tmp.setNumNodo(parser.contador++);
+                    tmp.addHijo((Nodo)comp);
+                    RESULT=tmp; 
+              
+              CUP$AnalizadorSintactico_chtml$result = parser.getSymbolFactory().newSymbol("INT_CUERPO",6, ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-6)), ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.peek()), RESULT);
+            }
+          return CUP$AnalizadorSintactico_chtml$result;
+
+          /*. . . . . . . . . . . . . . . . . . . .*/
+          case 22: // INT_CUERPO ::= textoai COMPLEMETO cierre cadena abierto textoaf cierre 
+            {
+              Object RESULT =null;
+		int compleft = ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-5)).left;
+		int compright = ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-5)).right;
+		Object comp = (Object)((java_cup.runtime.Symbol) CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-5)).value;
+		int ileft = ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-3)).left;
+		int iright = ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-3)).right;
+		Object i = (Object)((java_cup.runtime.Symbol) CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-3)).value;
+		
+                    Nodo tmp = new Nodo("TEXTOA");
+                    String str = i.toString();
+                    String ncadena=str.substring(1,str.length()-1);
+                    tmp.setValor(ncadena);
+                    tmp.setNumNodo(parser.contador++);
+                    tmp.addHijo((Nodo)comp);
+                    RESULT=tmp; 
+              
+              CUP$AnalizadorSintactico_chtml$result = parser.getSymbolFactory().newSymbol("INT_CUERPO",6, ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-6)), ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.peek()), RESULT);
+            }
+          return CUP$AnalizadorSintactico_chtml$result;
+
+          /*. . . . . . . . . . . . . . . . . . . .*/
+          case 23: // INT_CUERPO ::= CUERPO abierto panelf cierre 
+            {
+              Object RESULT =null;
+		int tmpleft = ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-3)).left;
+		int tmpright = ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-3)).right;
+		Object tmp = (Object)((java_cup.runtime.Symbol) CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-3)).value;
+		 
+                    RESULT=tmp;
+              
+              CUP$AnalizadorSintactico_chtml$result = parser.getSymbolFactory().newSymbol("INT_CUERPO",6, ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-3)), ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.peek()), RESULT);
+            }
+          return CUP$AnalizadorSintactico_chtml$result;
+
+          /*. . . . . . . . . . . . . . . . . . . .*/
+          case 24: // INT_CUERPO ::= TABLA 
+            {
+              Object RESULT =null;
+		int tmpleft = ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.peek()).left;
+		int tmpright = ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.peek()).right;
+		Object tmp = (Object)((java_cup.runtime.Symbol) CUP$AnalizadorSintactico_chtml$stack.peek()).value;
+		 
+                  RESULT=tmp;
+                
+              CUP$AnalizadorSintactico_chtml$result = parser.getSymbolFactory().newSymbol("INT_CUERPO",6, ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.peek()), ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.peek()), RESULT);
+            }
+          return CUP$AnalizadorSintactico_chtml$result;
+
+          /*. . . . . . . . . . . . . . . . . . . .*/
+          case 25: // INT_CUERPO ::= IMAGEN 
+            {
+              Object RESULT =null;
+		int tmpleft = ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.peek()).left;
+		int tmpright = ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.peek()).right;
+		Object tmp = (Object)((java_cup.runtime.Symbol) CUP$AnalizadorSintactico_chtml$stack.peek()).value;
+		
+                    RESULT=tmp; 
+              
+              CUP$AnalizadorSintactico_chtml$result = parser.getSymbolFactory().newSymbol("INT_CUERPO",6, ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.peek()), ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.peek()), RESULT);
+            }
+          return CUP$AnalizadorSintactico_chtml$result;
+
+          /*. . . . . . . . . . . . . . . . . . . .*/
+          case 26: // INT_CUERPO ::= BOTON 
+            {
+              Object RESULT =null;
+		int tmpleft = ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.peek()).left;
+		int tmpright = ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.peek()).right;
+		Object tmp = (Object)((java_cup.runtime.Symbol) CUP$AnalizadorSintactico_chtml$stack.peek()).value;
+		
+                  RESULT= tmp;
+                
+              CUP$AnalizadorSintactico_chtml$result = parser.getSymbolFactory().newSymbol("INT_CUERPO",6, ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.peek()), ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.peek()), RESULT);
+            }
+          return CUP$AnalizadorSintactico_chtml$result;
+
+          /*. . . . . . . . . . . . . . . . . . . .*/
+          case 27: // INT_CUERPO ::= CAJA_TEXTO 
+            {
+              Object RESULT =null;
+		int tmpleft = ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.peek()).left;
+		int tmpright = ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.peek()).right;
+		Object tmp = (Object)((java_cup.runtime.Symbol) CUP$AnalizadorSintactico_chtml$stack.peek()).value;
+		
+                  RESULT= tmp;
+              
+              CUP$AnalizadorSintactico_chtml$result = parser.getSymbolFactory().newSymbol("INT_CUERPO",6, ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.peek()), ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.peek()), RESULT);
+            }
+          return CUP$AnalizadorSintactico_chtml$result;
+
+          /*. . . . . . . . . . . . . . . . . . . .*/
+          case 28: // INT_CUERPO ::= CAJA 
+            {
+              Object RESULT =null;
+		int tmpleft = ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.peek()).left;
+		int tmpright = ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.peek()).right;
+		Object tmp = (Object)((java_cup.runtime.Symbol) CUP$AnalizadorSintactico_chtml$stack.peek()).value;
+		
+                  RESULT= tmp;
+              
+              CUP$AnalizadorSintactico_chtml$result = parser.getSymbolFactory().newSymbol("INT_CUERPO",6, ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.peek()), ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.peek()), RESULT);
+            }
+          return CUP$AnalizadorSintactico_chtml$result;
+
+          /*. . . . . . . . . . . . . . . . . . . .*/
+          case 29: // INT_CUERPO ::= SPINNER 
+            {
+              Object RESULT =null;
+		int tmpleft = ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.peek()).left;
+		int tmpright = ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.peek()).right;
+		Object tmp = (Object)((java_cup.runtime.Symbol) CUP$AnalizadorSintactico_chtml$stack.peek()).value;
+		
+                  RESULT= tmp;
+              
+              CUP$AnalizadorSintactico_chtml$result = parser.getSymbolFactory().newSymbol("INT_CUERPO",6, ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.peek()), ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.peek()), RESULT);
+            }
+          return CUP$AnalizadorSintactico_chtml$result;
+
+          /*. . . . . . . . . . . . . . . . . . . .*/
+          case 30: // INT_CUERPO ::= SALTO 
+            {
+              Object RESULT =null;
+		int tmpleft = ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.peek()).left;
+		int tmpright = ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.peek()).right;
+		Object tmp = (Object)((java_cup.runtime.Symbol) CUP$AnalizadorSintactico_chtml$stack.peek()).value;
+		
+                  RESULT= tmp;
+              
+              CUP$AnalizadorSintactico_chtml$result = parser.getSymbolFactory().newSymbol("INT_CUERPO",6, ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.peek()), ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.peek()), RESULT);
+            }
+          return CUP$AnalizadorSintactico_chtml$result;
+
+          /*. . . . . . . . . . . . . . . . . . . .*/
+          case 31: // INT_CUERPO ::= enlacei COMPLEMETO cierre palabra abierto enlacef cierre 
+            {
+              Object RESULT =null;
+		int compleft = ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-5)).left;
+		int compright = ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-5)).right;
+		Object comp = (Object)((java_cup.runtime.Symbol) CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-5)).value;
+		int ileft = ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-3)).left;
+		int iright = ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-3)).right;
+		Object i = (Object)((java_cup.runtime.Symbol) CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-3)).value;
+		 
+                    Nodo tmp = new Nodo("enlace");
+                    String str = i.toString();
+                    tmp.setValor(str);
+                    tmp.setNumNodo(parser.contador++);
+                    tmp.addHijo((Nodo)comp);
+                    RESULT=tmp; 
+              
+              CUP$AnalizadorSintactico_chtml$result = parser.getSymbolFactory().newSymbol("INT_CUERPO",6, ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-6)), ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.peek()), RESULT);
+            }
+          return CUP$AnalizadorSintactico_chtml$result;
+
+          /*. . . . . . . . . . . . . . . . . . . .*/
+          case 32: // INT_CUERPO ::= caja cierre 
+            {
+              Object RESULT =null;
+		int ileft = ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-1)).left;
+		int iright = ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-1)).right;
+		Object i = (Object)((java_cup.runtime.Symbol) CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-1)).value;
+		
+                    Nodo tmp = new Nodo("texto");
+                    tmp.setValor(i.toString());
+                    tmp.setNumNodo(parser.contador++);
+                    RESULT=tmp; 
+              
+              CUP$AnalizadorSintactico_chtml$result = parser.getSymbolFactory().newSymbol("INT_CUERPO",6, ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-1)), ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.peek()), RESULT);
+            }
+          return CUP$AnalizadorSintactico_chtml$result;
+
+          /*. . . . . . . . . . . . . . . . . . . .*/
+          case 33: // COMPLEMETO ::= COMPLEMETO ELEMENTO 
+            {
+              Object RESULT =null;
+		int ileft = ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-1)).left;
+		int iright = ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-1)).right;
+		Object i = (Object)((java_cup.runtime.Symbol) CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-1)).value;
+		int elleft = ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.peek()).left;
+		int elright = ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.peek()).right;
+		Object el = (Object)((java_cup.runtime.Symbol) CUP$AnalizadorSintactico_chtml$stack.peek()).value;
+		
+                  Nodo temp;
+                  temp = (Nodo) i;
+                  temp.addHijo((Nodo) el);
+                  RESULT=temp;
+              
+              CUP$AnalizadorSintactico_chtml$result = parser.getSymbolFactory().newSymbol("COMPLEMETO",8, ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-1)), ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.peek()), RESULT);
+            }
+          return CUP$AnalizadorSintactico_chtml$result;
+
+          /*. . . . . . . . . . . . . . . . . . . .*/
+          case 34: // COMPLEMETO ::= 
+            {
+              Object RESULT =null;
+		 
+                    Nodo tmp = new Nodo("COMPLEMETO");
+                    tmp.setNumNodo(parser.contador++);      
+                    RESULT=tmp;
+              
+              CUP$AnalizadorSintactico_chtml$result = parser.getSymbolFactory().newSymbol("COMPLEMETO",8, ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.peek()), RESULT);
+            }
+          return CUP$AnalizadorSintactico_chtml$result;
+
+          /*. . . . . . . . . . . . . . . . . . . .*/
+          case 35: // ELEMENTO ::= ids igual cadena ptc 
+            {
+              Object RESULT =null;
+		int ileft = ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-1)).left;
+		int iright = ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-1)).right;
+		Object i = (Object)((java_cup.runtime.Symbol) CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-1)).value;
+		 
+                    Nodo tmp = new Nodo("ID");
+                    tmp.setNumNodo(parser.contador++);
+                    String str = i.toString();
+                    String ncadena=str.substring(1,str.length()-1);
+                    tmp.setValor(ncadena);       
+                    RESULT=tmp;
+          
+              CUP$AnalizadorSintactico_chtml$result = parser.getSymbolFactory().newSymbol("ELEMENTO",7, ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-3)), ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.peek()), RESULT);
+            }
+          return CUP$AnalizadorSintactico_chtml$result;
+
+          /*. . . . . . . . . . . . . . . . . . . .*/
+          case 36: // ELEMENTO ::= fondo igual cadena cierre 
+            {
+              Object RESULT =null;
+		int ileft = ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-1)).left;
+		int iright = ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-1)).right;
+		Object i = (Object)((java_cup.runtime.Symbol) CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-1)).value;
+		
+                     Nodo tmp = new Nodo("FONDO");
+                    String str = i.toString();
+                    String ncadena=str.substring(1,str.length()-1);
                     tmp.setValor(ncadena);
                     tmp.setNumNodo(parser.contador++);
                     RESULT=tmp; 
-              CUP$AnalizadorSintactico_chtml$result = parser.getSymbolFactory().newSymbol("INT_ENCABEZADO",4, ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.peek()), ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.peek()), RESULT);
+          
+              CUP$AnalizadorSintactico_chtml$result = parser.getSymbolFactory().newSymbol("ELEMENTO",7, ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-3)), ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.peek()), RESULT);
+            }
+          return CUP$AnalizadorSintactico_chtml$result;
+
+          /*. . . . . . . . . . . . . . . . . . . .*/
+          case 37: // ELEMENTO ::= grupo igual cadena ptc 
+            {
+              Object RESULT =null;
+		int ileft = ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-1)).left;
+		int iright = ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-1)).right;
+		Object i = (Object)((java_cup.runtime.Symbol) CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-1)).value;
+		 
+                    Nodo tmp = new Nodo("GRUPO");
+                    tmp.setNumNodo(parser.contador++);
+                    String str = i.toString();
+                    String ncadena=str.substring(1,str.length()-1);
+                    tmp.setValor(ncadena);       
+                    RESULT=tmp;
+          
+              CUP$AnalizadorSintactico_chtml$result = parser.getSymbolFactory().newSymbol("ELEMENTO",7, ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-3)), ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.peek()), RESULT);
+            }
+          return CUP$AnalizadorSintactico_chtml$result;
+
+          /*. . . . . . . . . . . . . . . . . . . .*/
+          case 38: // ELEMENTO ::= alto igual cadena ptc 
+            {
+              Object RESULT =null;
+		int ileft = ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-1)).left;
+		int iright = ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-1)).right;
+		Object i = (Object)((java_cup.runtime.Symbol) CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-1)).value;
+		 
+                    Nodo tmp = new Nodo("ALTO");
+                    tmp.setNumNodo(parser.contador++);
+                    String str = i.toString();
+                    String ncadena=str.substring(1,str.length()-1);
+                    tmp.setValor(ncadena);       
+                    RESULT=tmp;
+          
+              CUP$AnalizadorSintactico_chtml$result = parser.getSymbolFactory().newSymbol("ELEMENTO",7, ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-3)), ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.peek()), RESULT);
+            }
+          return CUP$AnalizadorSintactico_chtml$result;
+
+          /*. . . . . . . . . . . . . . . . . . . .*/
+          case 39: // ELEMENTO ::= ancho igual cadena ptc 
+            {
+              Object RESULT =null;
+		int ileft = ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-1)).left;
+		int iright = ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-1)).right;
+		Object i = (Object)((java_cup.runtime.Symbol) CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-1)).value;
+		 
+                    Nodo tmp = new Nodo("ANCHO");
+                    tmp.setNumNodo(parser.contador++);
+                    String str = i.toString();
+                    String ncadena=str.substring(1,str.length()-1);
+                    tmp.setValor(ncadena);       
+                    RESULT=tmp;
+          
+              CUP$AnalizadorSintactico_chtml$result = parser.getSymbolFactory().newSymbol("ELEMENTO",7, ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-3)), ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.peek()), RESULT);
+            }
+          return CUP$AnalizadorSintactico_chtml$result;
+
+          /*. . . . . . . . . . . . . . . . . . . .*/
+          case 40: // ELEMENTO ::= alineado igual cadena ptc 
+            {
+              Object RESULT =null;
+		int ileft = ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-1)).left;
+		int iright = ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-1)).right;
+		Object i = (Object)((java_cup.runtime.Symbol) CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-1)).value;
+		 
+                    Nodo tmp = new Nodo("ALINEADO");
+                    tmp.setNumNodo(parser.contador++);
+                    String str = i.toString();
+                    String ncadena=str.substring(1,str.length()-1);
+                    tmp.setValor(ncadena);       
+                    RESULT=tmp;
+          
+              CUP$AnalizadorSintactico_chtml$result = parser.getSymbolFactory().newSymbol("ELEMENTO",7, ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-3)), ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.peek()), RESULT);
+            }
+          return CUP$AnalizadorSintactico_chtml$result;
+
+          /*. . . . . . . . . . . . . . . . . . . .*/
+          case 41: // ELEMENTO ::= ccss igual cadena ptc 
+            {
+              Object RESULT =null;
+		int ileft = ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-1)).left;
+		int iright = ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-1)).right;
+		Object i = (Object)((java_cup.runtime.Symbol) CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-1)).value;
+		 
+                    Nodo tmp = new Nodo("CCSS");
+                    tmp.setNumNodo(parser.contador++);
+                    String str = i.toString();
+                    String ncadena=str.substring(1,str.length()-1);
+                    tmp.setValor(ncadena);       
+                    RESULT=tmp;
+          
+              CUP$AnalizadorSintactico_chtml$result = parser.getSymbolFactory().newSymbol("ELEMENTO",7, ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-3)), ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.peek()), RESULT);
+            }
+          return CUP$AnalizadorSintactico_chtml$result;
+
+          /*. . . . . . . . . . . . . . . . . . . .*/
+          case 42: // ELEMENTO ::= click igual cadena ptc 
+            {
+              Object RESULT =null;
+		int ileft = ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-1)).left;
+		int iright = ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-1)).right;
+		Object i = (Object)((java_cup.runtime.Symbol) CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-1)).value;
+		 
+                    Nodo tmp = new Nodo("CLICK");
+                    tmp.setNumNodo(parser.contador++);
+                    String str = i.toString();
+                    String ncadena=str.substring(1,str.length()-1);
+                    tmp.setValor(ncadena);       
+                    RESULT=tmp;
+          
+              CUP$AnalizadorSintactico_chtml$result = parser.getSymbolFactory().newSymbol("ELEMENTO",7, ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-3)), ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.peek()), RESULT);
+            }
+          return CUP$AnalizadorSintactico_chtml$result;
+
+          /*. . . . . . . . . . . . . . . . . . . .*/
+          case 43: // ELEMENTO ::= ruta igual cadena ptc 
+            {
+              Object RESULT =null;
+		int ileft = ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-1)).left;
+		int iright = ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-1)).right;
+		Object i = (Object)((java_cup.runtime.Symbol) CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-1)).value;
+		 
+                    Nodo tmp = new Nodo("RUTA");
+                    tmp.setNumNodo(parser.contador++);
+                    String str = i.toString();
+                    String ncadena=str.substring(1,str.length()-1);
+                    tmp.setValor(ncadena);       
+                    RESULT=tmp;
+          
+              CUP$AnalizadorSintactico_chtml$result = parser.getSymbolFactory().newSymbol("ELEMENTO",7, ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-3)), ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.peek()), RESULT);
+            }
+          return CUP$AnalizadorSintactico_chtml$result;
+
+          /*. . . . . . . . . . . . . . . . . . . .*/
+          case 44: // ELEMENTO ::= valor igual cadena ptc 
+            {
+              Object RESULT =null;
+		int ileft = ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-1)).left;
+		int iright = ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-1)).right;
+		Object i = (Object)((java_cup.runtime.Symbol) CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-1)).value;
+		 
+                    Nodo tmp = new Nodo("VALOR");
+                    tmp.setNumNodo(parser.contador++);
+                    String str = i.toString();
+                    String ncadena=str.substring(1,str.length()-1);
+                    tmp.setValor(ncadena);       
+                    RESULT=tmp;
+          
+              CUP$AnalizadorSintactico_chtml$result = parser.getSymbolFactory().newSymbol("ELEMENTO",7, ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-3)), ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.peek()), RESULT);
+            }
+          return CUP$AnalizadorSintactico_chtml$result;
+
+          /*. . . . . . . . . . . . . . . . . . . .*/
+          case 45: // TABLA ::= tablai DENTRO_TABLA abierto tablaf cierre 
+            {
+              Object RESULT =null;
+		int tmpleft = ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-3)).left;
+		int tmpright = ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-3)).right;
+		Object tmp = (Object)((java_cup.runtime.Symbol) CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-3)).value;
+		 
+                  RESULT=tmp;
+          
+              CUP$AnalizadorSintactico_chtml$result = parser.getSymbolFactory().newSymbol("TABLA",12, ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-4)), ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.peek()), RESULT);
+            }
+          return CUP$AnalizadorSintactico_chtml$result;
+
+          /*. . . . . . . . . . . . . . . . . . . .*/
+          case 46: // DENTRO_TABLA ::= DENTRO_TABLA FILL 
+            {
+              Object RESULT =null;
+		int ileft = ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-1)).left;
+		int iright = ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-1)).right;
+		Object i = (Object)((java_cup.runtime.Symbol) CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-1)).value;
+		int elleft = ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.peek()).left;
+		int elright = ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.peek()).right;
+		Object el = (Object)((java_cup.runtime.Symbol) CUP$AnalizadorSintactico_chtml$stack.peek()).value;
+		 
+                  Nodo temp;
+                  temp = (Nodo) i;
+                  temp.addHijo((Nodo) el);
+                  RESULT=temp; 
+                
+              CUP$AnalizadorSintactico_chtml$result = parser.getSymbolFactory().newSymbol("DENTRO_TABLA",13, ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-1)), ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.peek()), RESULT);
+            }
+          return CUP$AnalizadorSintactico_chtml$result;
+
+          /*. . . . . . . . . . . . . . . . . . . .*/
+          case 47: // DENTRO_TABLA ::= cierre 
+            {
+              Object RESULT =null;
+		 
+                  Nodo tmp = new Nodo("TABLA");
+                  tmp.setNumNodo(parser.contador++);
+                  RESULT=tmp;
+                  
+              CUP$AnalizadorSintactico_chtml$result = parser.getSymbolFactory().newSymbol("DENTRO_TABLA",13, ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.peek()), ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.peek()), RESULT);
+            }
+          return CUP$AnalizadorSintactico_chtml$result;
+
+          /*. . . . . . . . . . . . . . . . . . . .*/
+          case 48: // FILL ::= fili DENTRO_FIL abierto filf cierre 
+            {
+              Object RESULT =null;
+		int tmpleft = ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-3)).left;
+		int tmpright = ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-3)).right;
+		Object tmp = (Object)((java_cup.runtime.Symbol) CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-3)).value;
+		 
+              RESULT=tmp;
+        
+              CUP$AnalizadorSintactico_chtml$result = parser.getSymbolFactory().newSymbol("FILL",18, ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-4)), ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.peek()), RESULT);
+            }
+          return CUP$AnalizadorSintactico_chtml$result;
+
+          /*. . . . . . . . . . . . . . . . . . . .*/
+          case 49: // DENTRO_FIL ::= DENTRO_FIL CONTENIDO_FILL 
+            {
+              Object RESULT =null;
+		int ileft = ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-1)).left;
+		int iright = ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-1)).right;
+		Object i = (Object)((java_cup.runtime.Symbol) CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-1)).value;
+		int elleft = ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.peek()).left;
+		int elright = ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.peek()).right;
+		Object el = (Object)((java_cup.runtime.Symbol) CUP$AnalizadorSintactico_chtml$stack.peek()).value;
+		
+                  Nodo temp;
+                  temp = (Nodo) i;
+                  temp.addHijo((Nodo) el);
+                  RESULT=temp;
+              
+              CUP$AnalizadorSintactico_chtml$result = parser.getSymbolFactory().newSymbol("DENTRO_FIL",14, ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-1)), ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.peek()), RESULT);
+            }
+          return CUP$AnalizadorSintactico_chtml$result;
+
+          /*. . . . . . . . . . . . . . . . . . . .*/
+          case 50: // DENTRO_FIL ::= cierre 
+            {
+              Object RESULT =null;
+		 
+                Nodo tmp = new Nodo("FIL");
+                tmp.setNumNodo(parser.contador++);
+                RESULT=tmp;
+              
+              CUP$AnalizadorSintactico_chtml$result = parser.getSymbolFactory().newSymbol("DENTRO_FIL",14, ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.peek()), ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.peek()), RESULT);
+            }
+          return CUP$AnalizadorSintactico_chtml$result;
+
+          /*. . . . . . . . . . . . . . . . . . . .*/
+          case 51: // CONTENIDO_FILL ::= cbi cierre CELDA cbf cierre 
+            {
+              Object RESULT =null;
+		int compleft = ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-2)).left;
+		int compright = ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-2)).right;
+		Object comp = (Object)((java_cup.runtime.Symbol) CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-2)).value;
+		
+                    Nodo tmp = new Nodo("CB");
+                    tmp.setNumNodo(parser.contador++);
+                    tmp.addHijo((Nodo)comp);
+                    RESULT=tmp; 
+              
+              CUP$AnalizadorSintactico_chtml$result = parser.getSymbolFactory().newSymbol("CONTENIDO_FILL",19, ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-4)), ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.peek()), RESULT);
+            }
+          return CUP$AnalizadorSintactico_chtml$result;
+
+          /*. . . . . . . . . . . . . . . . . . . .*/
+          case 52: // CONTENIDO_FILL ::= cti cierre CELDA ctf cierre 
+            {
+              Object RESULT =null;
+		int compleft = ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-2)).left;
+		int compright = ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-2)).right;
+		Object comp = (Object)((java_cup.runtime.Symbol) CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-2)).value;
+		
+                    Nodo tmp = new Nodo("CT");
+                    tmp.setNumNodo(parser.contador++);
+                    tmp.addHijo((Nodo)comp);
+                    RESULT=tmp; 
+              
+              CUP$AnalizadorSintactico_chtml$result = parser.getSymbolFactory().newSymbol("CONTENIDO_FILL",19, ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-4)), ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.peek()), RESULT);
+            }
+          return CUP$AnalizadorSintactico_chtml$result;
+
+          /*. . . . . . . . . . . . . . . . . . . .*/
+          case 53: // CELDA ::= BOTON abierto 
+            {
+              Object RESULT =null;
+		int tmpleft = ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-1)).left;
+		int tmpright = ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-1)).right;
+		Object tmp = (Object)((java_cup.runtime.Symbol) CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-1)).value;
+		 
+          RESULT=tmp;
+        
+              CUP$AnalizadorSintactico_chtml$result = parser.getSymbolFactory().newSymbol("CELDA",17, ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-1)), ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.peek()), RESULT);
+            }
+          return CUP$AnalizadorSintactico_chtml$result;
+
+          /*. . . . . . . . . . . . . . . . . . . .*/
+          case 54: // CELDA ::= IMAGEN abierto 
+            {
+              Object RESULT =null;
+		int tmpleft = ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-1)).left;
+		int tmpright = ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-1)).right;
+		Object tmp = (Object)((java_cup.runtime.Symbol) CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-1)).value;
+		 
+          RESULT=tmp;
+        
+              CUP$AnalizadorSintactico_chtml$result = parser.getSymbolFactory().newSymbol("CELDA",17, ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-1)), ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.peek()), RESULT);
+            }
+          return CUP$AnalizadorSintactico_chtml$result;
+
+          /*. . . . . . . . . . . . . . . . . . . .*/
+          case 55: // CELDA ::= abierto 
+            {
+              Object RESULT =null;
+		 
+          Nodo tmp = new Nodo("PALABRA");
+          tmp.setValor(null);;
+          RESULT=tmp;
+        
+              CUP$AnalizadorSintactico_chtml$result = parser.getSymbolFactory().newSymbol("CELDA",17, ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.peek()), ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.peek()), RESULT);
+            }
+          return CUP$AnalizadorSintactico_chtml$result;
+
+          /*. . . . . . . . . . . . . . . . . . . .*/
+          case 56: // CELDA ::= palabra abierto 
+            {
+              Object RESULT =null;
+		int ileft = ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-1)).left;
+		int iright = ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-1)).right;
+		Object i = (Object)((java_cup.runtime.Symbol) CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-1)).value;
+		
+                  Nodo tmp = new Nodo("PALABRA");
+                  tmp.setValor(i.toString());
+                  tmp.setNumNodo(parser.contador++); 
+                  RESULT=tmp;
+        
+              CUP$AnalizadorSintactico_chtml$result = parser.getSymbolFactory().newSymbol("CELDA",17, ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-1)), ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.peek()), RESULT);
+            }
+          return CUP$AnalizadorSintactico_chtml$result;
+
+          /*. . . . . . . . . . . . . . . . . . . .*/
+          case 57: // CAJA_TEXTO ::= cajati COMPLEMETO cierre CONTENIDO cajatf cierre 
+            {
+              Object RESULT =null;
+		int compleft = ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-4)).left;
+		int compright = ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-4)).right;
+		Object comp = (Object)((java_cup.runtime.Symbol) CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-4)).value;
+		int conleft = ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-2)).left;
+		int conright = ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-2)).right;
+		Object con = (Object)((java_cup.runtime.Symbol) CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-2)).value;
+		
+                  Nodo tmp = new Nodo("CAJA_TEXTO");
+                  Nodo temp;
+                  temp = (Nodo) con;
+                  tmp.setValor(temp.getNombre());
+                  tmp.addHijo((Nodo) comp);
+                  RESULT=tmp;
+
+            
+              CUP$AnalizadorSintactico_chtml$result = parser.getSymbolFactory().newSymbol("CAJA_TEXTO",20, ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-5)), ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.peek()), RESULT);
+            }
+          return CUP$AnalizadorSintactico_chtml$result;
+
+          /*. . . . . . . . . . . . . . . . . . . .*/
+          case 58: // CONTENIDO ::= palabra abierto 
+            {
+              Object RESULT =null;
+		int ileft = ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-1)).left;
+		int iright = ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-1)).right;
+		Object i = (Object)((java_cup.runtime.Symbol) CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-1)).value;
+		
+                  Nodo tmp = new Nodo(i.toString());
+                  tmp.setNumNodo(parser.contador++); 
+                  RESULT=tmp;
+              
+              CUP$AnalizadorSintactico_chtml$result = parser.getSymbolFactory().newSymbol("CONTENIDO",10, ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-1)), ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.peek()), RESULT);
+            }
+          return CUP$AnalizadorSintactico_chtml$result;
+
+          /*. . . . . . . . . . . . . . . . . . . .*/
+          case 59: // CONTENIDO ::= abierto 
+            {
+              Object RESULT =null;
+		 
+                  Nodo tmp = new Nodo(null);
+                  tmp.setNumNodo(parser.contador++); 
+                  RESULT=tmp;
+                
+              CUP$AnalizadorSintactico_chtml$result = parser.getSymbolFactory().newSymbol("CONTENIDO",10, ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.peek()), ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.peek()), RESULT);
+            }
+          return CUP$AnalizadorSintactico_chtml$result;
+
+          /*. . . . . . . . . . . . . . . . . . . .*/
+          case 60: // SPINNER ::= spinneri COMPLEMETO cierre CONTENIDO spinnerf cierre 
+            {
+              Object RESULT =null;
+		int compleft = ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-4)).left;
+		int compright = ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-4)).right;
+		Object comp = (Object)((java_cup.runtime.Symbol) CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-4)).value;
+		int conleft = ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-2)).left;
+		int conright = ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-2)).right;
+		Object con = (Object)((java_cup.runtime.Symbol) CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-2)).value;
+		
+                  Nodo tmp = new Nodo("SPINNER");
+                  Nodo temp;
+                  temp = (Nodo) con;
+                  tmp.setValor(temp.getNombre());
+                  tmp.addHijo((Nodo) comp);
+                  RESULT=tmp;
+            
+              CUP$AnalizadorSintactico_chtml$result = parser.getSymbolFactory().newSymbol("SPINNER",24, ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-5)), ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.peek()), RESULT);
+            }
+          return CUP$AnalizadorSintactico_chtml$result;
+
+          /*. . . . . . . . . . . . . . . . . . . .*/
+          case 61: // CAJA ::= DENTRO_CAJA abierto cajaf cierre 
+            {
+              Object RESULT =null;
+		int tmpleft = ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-3)).left;
+		int tmpright = ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-3)).right;
+		Object tmp = (Object)((java_cup.runtime.Symbol) CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-3)).value;
+		 
+            RESULT=tmp;
+        
+              CUP$AnalizadorSintactico_chtml$result = parser.getSymbolFactory().newSymbol("CAJA",21, ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-3)), ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.peek()), RESULT);
+            }
+          return CUP$AnalizadorSintactico_chtml$result;
+
+          /*. . . . . . . . . . . . . . . . . . . .*/
+          case 62: // DENTRO_CAJA ::= DENTRO_CAJA OPCIONES 
+            {
+              Object RESULT =null;
+		int ileft = ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-1)).left;
+		int iright = ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-1)).right;
+		Object i = (Object)((java_cup.runtime.Symbol) CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-1)).value;
+		int elleft = ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.peek()).left;
+		int elright = ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.peek()).right;
+		Object el = (Object)((java_cup.runtime.Symbol) CUP$AnalizadorSintactico_chtml$stack.peek()).value;
+		 
+                Nodo temp;
+                temp = (Nodo) i;
+                temp.addHijo((Nodo) el);
+                RESULT=temp;
+            
+              CUP$AnalizadorSintactico_chtml$result = parser.getSymbolFactory().newSymbol("DENTRO_CAJA",22, ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-1)), ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.peek()), RESULT);
+            }
+          return CUP$AnalizadorSintactico_chtml$result;
+
+          /*. . . . . . . . . . . . . . . . . . . .*/
+          case 63: // DENTRO_CAJA ::= cajai COMPLEMETO cierre 
+            {
+              Object RESULT =null;
+		int comleft = ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-1)).left;
+		int comright = ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-1)).right;
+		Object com = (Object)((java_cup.runtime.Symbol) CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-1)).value;
+		 
+               Nodo tmp = new Nodo("CAJA");
+               tmp.addHijo((Nodo)com);
+               RESULT=tmp; 
+          
+              CUP$AnalizadorSintactico_chtml$result = parser.getSymbolFactory().newSymbol("DENTRO_CAJA",22, ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-2)), ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.peek()), RESULT);
+            }
+          return CUP$AnalizadorSintactico_chtml$result;
+
+          /*. . . . . . . . . . . . . . . . . . . .*/
+          case 64: // OPCIONES ::= opcioni COMPLEMETO cierre palabra abierto opcionf cierre 
+            {
+              Object RESULT =null;
+		int comleft = ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-5)).left;
+		int comright = ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-5)).right;
+		Object com = (Object)((java_cup.runtime.Symbol) CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-5)).value;
+		int ileft = ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-3)).left;
+		int iright = ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-3)).right;
+		Object i = (Object)((java_cup.runtime.Symbol) CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-3)).value;
+		 
+                  Nodo tmp = new Nodo("OPCION");
+                  tmp.setValor(i.toString());  
+                  tmp.addHijo((Nodo)com);
+                  RESULT=tmp; 
+        
+              CUP$AnalizadorSintactico_chtml$result = parser.getSymbolFactory().newSymbol("OPCIONES",23, ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-6)), ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.peek()), RESULT);
+            }
+          return CUP$AnalizadorSintactico_chtml$result;
+
+          /*. . . . . . . . . . . . . . . . . . . .*/
+          case 65: // SALTO ::= salto cierre 
+            {
+              Object RESULT =null;
+		 
+           Nodo tmp = new Nodo("SALTO");
+           RESULT=tmp; 
+      
+              CUP$AnalizadorSintactico_chtml$result = parser.getSymbolFactory().newSymbol("SALTO",25, ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.elementAt(CUP$AnalizadorSintactico_chtml$top-1)), ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico_chtml$stack.peek()), RESULT);
             }
           return CUP$AnalizadorSintactico_chtml$result;
 

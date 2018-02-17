@@ -7,6 +7,8 @@ package proye1_compi2018;
 
 import achtml.AnalizadorLexico_chtml;
 import achtml.AnalizadorSintactico_chtml;
+import cjs.AnalizadorLexico_cjs;
+import cjs.AnalizadorSintactico_cjs;
 import java.io.BufferedReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -21,6 +23,8 @@ public class navegador extends javax.swing.JPanel {
 
   AnalizadorLexico_chtml lexico_chtml;
   AnalizadorSintactico_chtml sintactico_chtml;
+  AnalizadorLexico_cjs lexico_cjs;
+  AnalizadorSintactico_cjs sintactico_cjs;
   
     public navegador() {
         initComponents();
@@ -68,27 +72,36 @@ public class navegador extends javax.swing.JPanel {
             }
         });
 
+        txt_texto.setColumns(20);
+        txt_texto.setRows(5);
+        jScrollPane1.setViewportView(txt_texto);
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(bt_atras, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(bt_adelante, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(bt_cargar, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 520, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(164, 164, 164)
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jToggleButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(bt_atras, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(bt_adelante, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(bt_cargar, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 520, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(164, 164, 164)
+                                .addComponent(jLabel1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jToggleButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap())))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addComponent(jScrollPane1)
                         .addContainerGap())))
         );
         jPanel2Layout.setVerticalGroup(
@@ -109,26 +122,22 @@ public class navegador extends javax.swing.JPanel {
                         .addComponent(bt_adelante, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(bt_atras, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                         .addComponent(bt_cargar, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 206, Short.MAX_VALUE)
+                .addContainerGap())
         );
-
-        txt_texto.setColumns(20);
-        txt_texto.setRows(5);
-        jScrollPane1.setViewportView(txt_texto);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jScrollPane1)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 206, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -137,18 +146,27 @@ public class navegador extends javax.swing.JPanel {
         String entrada;
         entrada = this.txt_texto.getText();//tomamos el texto
         
-        lexico_chtml = new AnalizadorLexico_chtml(new BufferedReader( new StringReader(entrada)));
-        sintactico_chtml = new AnalizadorSintactico_chtml(lexico_chtml);
-        
-        try{
-            sintactico_chtml.parse();
-        }catch(Exception ex){
-            System.out.println("Error "+ex);
-        }
+        Analizar_cjs(entrada);
+        //Analizar_html(entrada);
     }//GEN-LAST:event_bt_cargarActionPerformed
 
     private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
         // TODO add your handling code here:
+        graficar_cjs();
+        //graficar_html();
+    }//GEN-LAST:event_jToggleButton1ActionPerformed
+    
+    public void Analizar_html(String entrada){
+        lexico_chtml = new AnalizadorLexico_chtml(new BufferedReader( new StringReader(entrada)));
+        sintactico_chtml = new AnalizadorSintactico_chtml(lexico_chtml);
+        
+        try{ sintactico_chtml.parse();
+        }catch(Exception ex){
+            System.out.println("Error "+ex);  }
+    
+    }
+    
+    public void graficar_html(){
         if(sintactico_chtml != null){
             if(sintactico_chtml.padre != null){
                 graficar(sintactico_chtml.padre);
@@ -157,8 +175,28 @@ public class navegador extends javax.swing.JPanel {
         }
         else
             System.out.println("No se puede graficar!!!");
-    }//GEN-LAST:event_jToggleButton1ActionPerformed
+    }
     
+     public void Analizar_cjs(String entrada){
+        lexico_cjs = new AnalizadorLexico_cjs(new BufferedReader( new StringReader(entrada)));
+        sintactico_cjs = new AnalizadorSintactico_cjs(lexico_cjs);
+        
+        try{ sintactico_cjs.parse();
+        }catch(Exception ex){
+            System.out.println("Error "+ex);  }
+    }
+     
+    public void graficar_cjs(){
+        if(sintactico_cjs != null){
+            if(sintactico_cjs.padre != null){
+                graficar(sintactico_cjs.padre);
+                System.out.println("Se ha graficado con exito");
+            }
+        }
+        else
+            System.out.println("No se puede graficar!!!");
+    }
+     
      public void graficar(Nodo raiz){
         FileWriter archivo = null;
         PrintWriter pw = null;

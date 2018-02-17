@@ -1,0 +1,297 @@
+package cjs;
+import java_cup.runtime.Symbol;
+import proye1_compi2018.Nodo;
+
+parser code
+{:
+    public String resultado="";
+    public Nodo padre;
+    public int contador = 1;
+    @Override
+    public void syntax_error(Symbol s){
+        System.out.println("Error Sintactico en la Linea " + (s.right+1) +" Columna "+s.left+ ". Identificador " +s.value + " no reconocido." );
+    }
+
+    @Override
+    public void unrecovered_syntax_error(Symbol s){
+        //System.out.println("Error Sintactico en la Linea " + (s.right+1)+ "Columna "+s.left+". Identificador " + s.value + " no reconocido.");
+    }
+:}
+
+action code
+{:
+
+:}
+
+
+terminal dimv, dpt, lli, llf, coma, pyc, pt, pari, parf, atexto, si, sino, mensaje, documento, obtener,
+        selecciona, caso, para, mientras, detener, imprimir, funcion, retornar, setelemento, observador; 
+//operaciones
+terminal igual, diferente, menorq, mayorq, menory, mayory, and, or, not, suma, division, potencia, numero,
+         modulo, adicion, sustraccion, id, cadena, bool, date, datetime, resta, multiplicacion;
+
+non terminal S0, E0 ,INICIO, CONTENIDO, VARIABLE, TIPO_VARIABLE, TIPO;
+non terminal CONDICION, RELACIONALES, EXPRESION, VECTOR, AVECTOR, VALOR; 
+
+precedence left suma, resta;
+precedence left multiplicacion, division;
+precedence left potencia;
+precedence left adicion, sustraccion;
+precedence left igual, diferente, menorq;
+precedence left mayorq, menory, mayory;
+precedence left or;
+precedence left and;
+precedence left not;
+
+start with S0;
+
+S0 ::= INICIO:inc {: 
+        parser.padre = (Nodo) inc;
+        System.out.println("DOCUMENTO OK"); 
+    :};
+
+INICIO ::= INICIO:inc CONTENIDO:con {:
+            Nodo temp;
+            temp = (Nodo) inc;
+            temp.addHijo((Nodo)con);
+            RESULT=temp;
+        :}
+         | {:   Nodo tmp = new Nodo("INICIO");
+                tmp.setNumNodo(parser.contador++); 
+                RESULT=tmp;
+           :} ;
+
+CONTENIDO ::= VARIABLE:tmp {:
+                RESULT=tmp;
+             :} 
+             | VALOR:tmp {:
+                RESULT=tmp;
+             :} ;
+
+
+VARIABLE ::= dimv id:i TIPO_VARIABLE:tv {:  
+                Nodo temp;
+                temp = (Nodo) tv;
+                String nombre = "DIMV_"+temp.getNombre();
+                temp.setNombre(nombre);
+                temp.setValor(i.toString());
+                RESULT=temp;
+             :} ;
+
+TIPO_VARIABLE ::= dpt VECTOR:tmp llf pyc {: 
+                    RESULT = tmp;
+                 :}  
+                | dpt E0:con pyc {:
+                   Nodo tmp = new Nodo("ASIGNACION");
+                   tmp.setNumNodo(parser.contador++); 
+                   tmp.addHijo((Nodo)con);
+                   RESULT=tmp; 
+                :} 
+                 | pyc {:
+                   Nodo tmp = new Nodo("VARIABLE");
+                   tmp.setNumNodo(parser.contador++); 
+                   RESULT=tmp; :} ;
+
+VECTOR ::= VECTOR:tmp coma E0:e1 {: 
+            Nodo temp;
+            temp = (Nodo) tmp;
+            temp.addHijo((Nodo)e1);
+            RESULT=temp;
+        :}
+         |  AVECTOR:tmp {: 
+            RESULT=tmp;
+         :};
+
+E0 ::= CONDICION:tmp {:
+         RESULT=tmp;
+     :} ;
+
+VALOR ::= id:i dpt E0:e1 pyc {:
+            Nodo tmp = new Nodo("VARIABLE");
+            tmp.setNumNodo(parser.contador++); 
+            tmp.setValor(i.toString());
+            tmp.addHijo((Nodo)e1);
+            RESULT=tmp;
+        :}
+         | id:i AVECTOR:tmp llf dpt E0:e1 pyc {: 
+                Nodo temp;
+                temp = (Nodo) tmp;
+                temp.addHijo((Nodo)e1);
+                RESULT=tmp;
+            :};
+
+CONDICION ::= CONDICION:c1 and CONDICION:c2 {:
+                      Nodo tmp = new Nodo("AND");
+                      tmp.setNumNodo(parser.contador++); 
+                      tmp.addHijo((Nodo)c1);
+                      tmp.addHijo((Nodo)c2);
+                      RESULT=tmp;
+            :}
+            | CONDICION:c1 or CONDICION:c2 {:
+                      Nodo tmp = new Nodo("OR");
+                      tmp.setNumNodo(parser.contador++); 
+                      tmp.addHijo((Nodo)c1);
+                      tmp.addHijo((Nodo)c2);
+                      RESULT=tmp;
+            :}
+            | CONDICION:c1 not {:
+                Nodo tmp = new Nodo("NOT");
+                tmp.setNumNodo(parser.contador++); 
+                tmp.addHijo((Nodo)c1);
+                RESULT=tmp;
+            :}
+            | RELACIONALES:r1 {:
+                    RESULT=r1;
+            :};
+
+RELACIONALES ::= EXPRESION:r1 igual EXPRESION:r2{:
+                      Nodo tmp = new Nodo("IGUAL");
+                      tmp.setNumNodo(parser.contador++); 
+                      tmp.addHijo((Nodo)r1);
+                      tmp.addHijo((Nodo)r2);
+                      RESULT=tmp;
+                :}
+                | EXPRESION:r1 diferente EXPRESION:r2{:
+                      Nodo tmp = new Nodo("DIFERENTE");
+                      tmp.setNumNodo(parser.contador++); 
+                      tmp.addHijo((Nodo)r1);
+                      tmp.addHijo((Nodo)r2);
+                      RESULT=tmp;
+                :}
+                |  EXPRESION:r1 menorq EXPRESION:r2{:
+                      Nodo tmp = new Nodo("MENORQ");
+                      tmp.setNumNodo(parser.contador++); 
+                      tmp.addHijo((Nodo)r1);
+                      tmp.addHijo((Nodo)r2);
+                      RESULT=tmp;
+                :}
+                |  EXPRESION:r1 mayorq EXPRESION:r2{:
+                      Nodo tmp = new Nodo("MAYORQ");
+                      tmp.setNumNodo(parser.contador++); 
+                      tmp.addHijo((Nodo)r1);
+                      tmp.addHijo((Nodo)r2);
+                      RESULT=tmp;
+                :}
+                |  EXPRESION:r1 menory EXPRESION:r2 {:
+                      Nodo tmp = new Nodo("MENORY");
+                      tmp.setNumNodo(parser.contador++); 
+                      tmp.addHijo((Nodo)r1);
+                      tmp.addHijo((Nodo)r2);
+                      RESULT=tmp;
+                :}
+                |  EXPRESION:r1  mayory EXPRESION:r2 {:
+                      Nodo tmp = new Nodo("MAYORY");
+                      tmp.setNumNodo(parser.contador++); 
+                      tmp.addHijo((Nodo)r1);
+                      tmp.addHijo((Nodo)r2);
+                      RESULT=tmp;
+                :}
+                |  EXPRESION:e1 {:
+                        RESULT=e1;
+                :};
+
+EXPRESION ::= EXPRESION:e1 suma EXPRESION:e2{:
+                Nodo tmp = new Nodo("SUMA");
+                tmp.setNumNodo(parser.contador++); 
+                tmp.addHijo((Nodo)e1);
+                tmp.addHijo((Nodo)e2);
+                RESULT=tmp;
+            :}
+            | EXPRESION:e1 resta EXPRESION:e2{:
+                Nodo tmp = new Nodo("RESTA");
+                tmp.setNumNodo(parser.contador++); 
+                tmp.addHijo((Nodo)e1);
+                tmp.addHijo((Nodo)e2);
+                RESULT=tmp;
+            :}
+            | EXPRESION:e1 multiplicacion EXPRESION:e2{:
+                Nodo tmp = new Nodo("MULTIPLICACION");
+                tmp.setNumNodo(parser.contador++); 
+                tmp.addHijo((Nodo)e1);
+                tmp.addHijo((Nodo)e2);
+                RESULT=tmp;
+            :}
+            | EXPRESION:e1 division EXPRESION:e2{:
+                Nodo tmp = new Nodo("DIVISION");
+                tmp.setNumNodo(parser.contador++); 
+                tmp.addHijo((Nodo)e1);
+                tmp.addHijo((Nodo)e2);
+                RESULT=tmp;
+            :}
+            | EXPRESION:e1 potencia EXPRESION:e2 {:
+                Nodo tmp = new Nodo("POTENCIA");
+                tmp.setNumNodo(parser.contador++); 
+                tmp.addHijo((Nodo)e1);
+                tmp.addHijo((Nodo)e2);
+                RESULT=tmp;
+            :}
+            | EXPRESION:e1  adicion {:
+                Nodo tmp = new Nodo("ADICION");
+                tmp.setNumNodo(parser.contador++); 
+                tmp.addHijo((Nodo)e1);
+                RESULT=tmp;
+            :}
+            | EXPRESION:e1  sustraccion {:
+                Nodo tmp = new Nodo("SUSTRACCION");
+                tmp.setNumNodo(parser.contador++); 
+                tmp.addHijo((Nodo)e1);
+                RESULT=tmp;
+            :}
+            | pari CONDICION:c1 parf {: 
+                RESULT = c1;
+            :}
+            | TIPO:tmp {: 
+                RESULT=tmp;
+            :};
+
+TIPO ::=   datetime:i {: 
+            Nodo tmp = new Nodo("DATATIME");
+            tmp.setValor(i.toString());
+            tmp.setNumNodo(parser.contador++); 
+            RESULT=tmp; 
+        :}
+        | date:i {: 
+            Nodo tmp = new Nodo("DATE");
+            tmp.setValor(i.toString());
+            tmp.setNumNodo(parser.contador++); 
+            RESULT=tmp;
+        :}
+        | cadena:i {: 
+            Nodo tmp = new Nodo("CADENA");
+            String str = i.toString();
+            String ncadena=str.substring(1,str.length()-1);
+            tmp.setValor(ncadena);
+            tmp.setNumNodo(parser.contador++); 
+            RESULT=tmp; 
+        :}
+        | bool:i {: 
+            Nodo tmp = new Nodo("BOOl");
+            tmp.setValor(i.toString());
+            tmp.setNumNodo(parser.contador++); 
+            RESULT=tmp; 
+        :}
+        | numero:i {: 
+            Nodo tmp = new Nodo("NUMERO");
+            tmp.setValor(i.toString());
+            tmp.setNumNodo(parser.contador++); 
+            RESULT=tmp; 
+            :}
+        | id:i AVECTOR:tmp llf {:
+            Nodo temp;
+            temp = (Nodo) tmp;
+            temp.setValor(i.toString());
+            RESULT = tmp;
+        :}
+        | id:i {: 
+            Nodo tmp = new Nodo("ID");
+            tmp.setValor(i.toString());
+            tmp.setNumNodo(parser.contador++); 
+            RESULT=tmp; 
+        :} ;
+
+AVECTOR ::= lli E0:e1 {: 
+            Nodo tmp = new Nodo("VECTOR");
+            tmp.setNumNodo(parser.contador++); 
+            tmp.addHijo((Nodo)e1); 
+            RESULT=tmp;
+        :} ;
