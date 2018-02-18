@@ -1,0 +1,75 @@
+DimV variable;
+Dimv Asignacion: '08/08/2018 22:09:15';
+DimV feliz: ("id"+5*5&&7)>5!;
+DImV probando: 5+numero{2};
+DIMV vec: {uno,2+3, "Texto"};
+
+MiCadena : miLista.aTexto(); 
+tamanioVector : miVector.Conteo;
+
+Si( a < 10 ){
+	b :23;
+}Sino{
+	b : 46;
+}
+
+Selecciona ( a * 15 ){
+	Caso 10 :
+		detener;
+		imprimir("hola mundo");
+	Caso 15 :
+
+	Defecto :
+
+}
+
+Para( a : 10; a > 0; --){
+	b :23;
+}
+
+Mientras( a < 10 ){
+	a : a + 1;
+}
+
+funcion prueba(){
+	Imprimir(“Hola mundo”);
+}
+
+funcion valor_mayor( x , y){
+	si(x > y){
+		Imprimir(x);
+ 	}sino{
+ 		Imprimir(y);
+ 	}
+}
+
+funcion prueba(x){
+ 	Imprimir("El valor es" + x);
+}
+funcion prueba( x , y){
+ 	si(x > y){
+		Imprimir("Variable1 es mayor que Variable2");
+	 }sino{
+		Imprimir("Variable2 es mayor que Variable1");
+ 	}
+}
+
+llamada();
+llamada(v1);
+llamada(v1,v2);
+
+Documento.Observador("listo", mi_funcion());
+Documento.Obtener("id_titulo");
+Dimv mi_boton : Documento.Obtener("mi_boton");
+Mi_boton.setElemento("ruta", "C:/…");
+Documento.Obtener("mi_imagen").setElemento("ruta","~/rutanueva");
+
+Documento.Observador("listo", funcion(){
+ Imprimir("Documento listo");
+});
+
+Dimv mi_boton : Documento.Obtener("mi_boton");
+funcion mi_funcion(){
+ imprimir("Estas dentro de mi_funcion");
+}
+Mi_boton.Observador("clic", mi_funcion());

@@ -24,8 +24,10 @@ public class Simbolo {
   public static final int adicion = 41;
   public static final int pt = 8;
   public static final int multiplicacion = 49;
+  public static final int conteo = 50;
   public static final int si = 12;
   public static final int mientras = 20;
+  public static final int defecto = 51;
   public static final int numero = 39;
   public static final int observador = 26;
   public static final int pari = 9;
@@ -49,6 +51,7 @@ public class Simbolo {
   public static final int diferente = 28;
   public static final int not = 35;
   public static final int and = 33;
+  public static final int newfuncion = 52;
   public static final int atexto = 11;
   public static final int retornar = 24;
   public static final int date = 46;
@@ -108,7 +111,10 @@ public class Simbolo {
   "date",
   "datetime",
   "resta",
-  "multiplicacion"
+  "multiplicacion",
+  "conteo",
+  "defecto",
+  "newfuncion"
   };
 }
 

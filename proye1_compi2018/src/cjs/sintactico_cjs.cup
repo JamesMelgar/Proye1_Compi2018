@@ -28,13 +28,17 @@ terminal dimv, dpt, lli, llf, coma, pyc, pt, pari, parf, atexto, si, sino, mensa
         selecciona, caso, para, mientras, detener, imprimir, funcion, retornar, setelemento, observador; 
 //operaciones
 terminal igual, diferente, menorq, mayorq, menory, mayory, and, or, not, suma, division, potencia, numero,
-         modulo, adicion, sustraccion, id, cadena, bool, date, datetime, resta, multiplicacion;
+         modulo, adicion, sustraccion, id, cadena, bool, date, datetime, resta, multiplicacion, conteo,
+         defecto, newfuncion;
 
-non terminal S0, E0 ,INICIO, CONTENIDO, VARIABLE, TIPO_VARIABLE, TIPO;
-non terminal CONDICION, RELACIONALES, EXPRESION, VECTOR, AVECTOR, VALOR; 
+non terminal S0, E0 ,INICIO, CONTENIDO, VARIABLE, TIPO_VARIABLE, TIPO, FUNCION, RETORNAR, LLAMADA, NEWFUNCION;
+non terminal CONDICION, RELACIONALES, EXPRESION, VECTOR, AVECTOR, VALOR, SELECCIONA, PARA, SINO, SI, CUAL,
+             CASO, DEFECTO, CONSELECCIONA, CONPARA, INCDEC, MIENTRAS, DETENER, IMPRIMIR, PARAMETRO, PARAMETROS,
+             LLPARAMETROS, LLPARAMETRO, MENSAJE, DOCUMENTO, OBSERVADOR, OBTENER, SETELEM, OBSET,
+             ID_OBS, SETELEMENTO; 
 
 precedence left suma, resta;
-precedence left multiplicacion, division;
+precedence left multiplicacion, division, modulo;
 precedence left potencia;
 precedence left adicion, sustraccion;
 precedence left igual, diferente, menorq;
@@ -64,9 +68,53 @@ INICIO ::= INICIO:inc CONTENIDO:con {:
 CONTENIDO ::= VARIABLE:tmp {:
                 RESULT=tmp;
              :} 
-             | VALOR:tmp {:
+             | SI:tmp llf SINO:hs llf{: 
+                    Nodo temp = (Nodo)tmp;
+                    temp.addHijo((Nodo)hs);
+                    RESULT=temp;
+              :}
+             | SI:tmp llf {: 
+                    RESULT=tmp;
+             :}
+             | SELECCIONA:tmp llf {: 
+                    RESULT=tmp;
+            :}
+            | PARA:tmp llf {: 
+                    RESULT=tmp;
+            :}
+            | MIENTRAS:tmp llf {: 
+                    RESULT=tmp;
+            :}
+            | DETENER:tmp pyc {: 
                 RESULT=tmp;
-             :} ;
+            :}
+            | IMPRIMIR:tmp pyc {: 
+                    RESULT=tmp;
+            :}
+            | FUNCION:tmp llf {: 
+                RESULT=tmp;
+            :}
+            | RETORNAR:tmp pyc{: 
+                RESULT=tmp;
+            :}
+            | LLAMADA:tmp pyc{: 
+                RESULT=tmp;
+            :}
+            | MENSAJE:tmp pyc {: 
+                RESULT=tmp;
+            :}
+            | ID_OBS:tmp pyc {: 
+                RESULT=tmp;
+            :}
+            | DOCUMENTO:tmp pyc{: 
+                RESULT=tmp;
+            :}
+            | SETELEMENTO:tmp pyc {: 
+                RESULT=tmp;
+            :}
+            | VALOR:tmp {:
+                RESULT=tmp;
+            :} ;
 
 
 VARIABLE ::= dimv id:i TIPO_VARIABLE:tv {:  
@@ -116,7 +164,7 @@ VALOR ::= id:i dpt E0:e1 pyc {:
          | id:i AVECTOR:tmp llf dpt E0:e1 pyc {: 
                 Nodo temp;
                 temp = (Nodo) tmp;
-                temp.addHijo((Nodo)e1);
+                temp.setValor(i.toString());
                 RESULT=tmp;
             :};
 
@@ -204,6 +252,13 @@ EXPRESION ::= EXPRESION:e1 suma EXPRESION:e2{:
                 tmp.addHijo((Nodo)e2);
                 RESULT=tmp;
             :}
+            | EXPRESION:e1 modulo EXPRESION:e2{:
+                Nodo tmp = new Nodo("MODULO");
+                tmp.setNumNodo(parser.contador++); 
+                tmp.addHijo((Nodo)e1);
+                tmp.addHijo((Nodo)e2);
+                RESULT=tmp;
+            :}
             | EXPRESION:e1 multiplicacion EXPRESION:e2{:
                 Nodo tmp = new Nodo("MULTIPLICACION");
                 tmp.setNumNodo(parser.contador++); 
@@ -282,6 +337,27 @@ TIPO ::=   datetime:i {:
             temp.setValor(i.toString());
             RESULT = tmp;
         :}
+         | id:i pt conteo {:
+            Nodo tmp = new Nodo("CONTEO");
+            tmp.setValor(i.toString());
+            tmp.setNumNodo(parser.contador++); 
+            RESULT=tmp;
+        :}
+        | id:i pt atexto{:
+            Nodo tmp = new Nodo("ATEXTO");
+            tmp.setValor(i.toString());
+            tmp.setNumNodo(parser.contador++); 
+            RESULT=tmp;
+        :}
+        | LLAMADA:tmp {: 
+            RESULT=tmp;
+        :}
+        | DOCUMENTO:tmp {: 
+            RESULT=tmp;
+        :}
+        | ID_OBS:tmp {: 
+            RESULT=tmp;
+        :}
         | id:i {: 
             Nodo tmp = new Nodo("ID");
             tmp.setValor(i.toString());
@@ -295,3 +371,301 @@ AVECTOR ::= lli E0:e1 {:
             tmp.addHijo((Nodo)e1); 
             RESULT=tmp;
         :} ;
+
+SI ::=  SI:tmp CONTENIDO:con {: 
+            Nodo temp;
+            temp = (Nodo) tmp;
+            temp.addHijo((Nodo)con);
+            RESULT = temp;
+        :}
+      | si pari E0:e1 parf lli {: 
+          Nodo tmp = new Nodo("SI");
+          tmp.setNumNodo(parser.contador++); 
+          tmp.addHijo((Nodo)e1); 
+          RESULT=tmp;
+       :};
+
+SINO ::= SINO:tmp CONTENIDO:con {: 
+            Nodo temp;
+            temp = (Nodo) tmp;
+            temp.addHijo((Nodo)con);
+            RESULT = temp;
+        :}
+        | sino lli {: 
+            Nodo tmp = new Nodo("SINO");
+            tmp.setNumNodo(parser.contador++); 
+            RESULT=tmp;
+       :};
+
+SELECCIONA ::=  SELECCIONA:tmp CONSELECCIONA:con {: 
+                    Nodo temp = (Nodo)tmp;
+                    temp.addHijo((Nodo)con);
+                    RESULT=temp;
+                :}
+                | selecciona pari E0:e1 parf lli {: 
+                    Nodo tmp = new Nodo("SELECCIONA");
+                    tmp.setNumNodo(parser.contador++);
+                    tmp.addHijo((Nodo)e1);
+                    RESULT=tmp;
+                :};
+
+CONSELECCIONA ::= CASO:tmp {: 
+                    RESULT=tmp;
+                :}
+                 | DEFECTO:tmp {: 
+                    RESULT=tmp;
+                :} ;
+
+CASO ::= CASO:tmp CONTENIDO:con {: 
+            Nodo temp = (Nodo)tmp;
+            temp.addHijo((Nodo)con);
+            RESULT=temp;
+        :}
+        | caso E0:e1 dpt {: 
+            Nodo tmp = new Nodo("CASO");
+            tmp.setNumNodo(parser.contador++); 
+            tmp.addHijo((Nodo)e1);
+            RESULT=tmp;
+        :} ;
+
+DEFECTO ::= DEFECTO:tmp CONTENIDO:con {: 
+            Nodo temp = (Nodo)tmp;
+            temp.addHijo((Nodo)con);
+            RESULT=temp;
+        :}
+        | defecto dpt {: 
+            Nodo tmp = new Nodo("DEFECTO");
+            tmp.setNumNodo(parser.contador++); 
+            RESULT=tmp;
+        :};
+
+PARA ::=  PARA:tmp CONTENIDO:con {: 
+            Nodo temp = (Nodo)tmp;
+            temp.addHijo((Nodo)con);
+            RESULT=temp;
+        :}
+        | para pari CONPARA:con parf lli {: 
+            Nodo tmp = new Nodo("PARA");
+            tmp.addHijo((Nodo)con);
+            RESULT=tmp;
+        :};
+
+CONPARA ::= id dpt E0:e1 pyc E0:e2 pyc INCDEC:inc {:
+            Nodo tmp = new Nodo("CONTENIDO");
+            tmp.setNumNodo(parser.contador++); 
+            tmp.addHijo((Nodo)e1);
+            tmp.addHijo((Nodo)e2);
+            tmp.addHijo((Nodo)inc);
+            RESULT=tmp;
+        :};
+
+INCDEC ::= sustraccion {: 
+                Nodo tmp = new Nodo("SUSTRACCION");
+                tmp.setNumNodo(parser.contador++); 
+                RESULT=tmp;
+            :}
+          | adicion {: 
+                Nodo tmp = new Nodo("ADICION");
+                tmp.setNumNodo(parser.contador++); 
+                RESULT=tmp;
+            :};
+
+MIENTRAS ::= MIENTRAS:tmp CONTENIDO:con {: 
+            Nodo temp = (Nodo)tmp;
+            temp.addHijo((Nodo)con);
+            RESULT=temp;
+        :}
+        | mientras pari E0:e1 parf lli {:
+            Nodo tmp = new Nodo("MIENTRAS");
+            tmp.setNumNodo(parser.contador++); 
+            tmp.addHijo((Nodo)e1);
+            RESULT=tmp;
+         :} ;
+
+DETENER ::= detener {: 
+            Nodo tmp = new Nodo("DETENER");
+            tmp.setNumNodo(parser.contador++); 
+            RESULT=tmp;
+        :};
+
+IMPRIMIR ::= imprimir pari E0:e1 parf {:
+                Nodo tmp = new Nodo("IMPRIMIR");
+                tmp.setNumNodo(parser.contador++); 
+                tmp.addHijo((Nodo)e1);
+                RESULT=tmp;
+         :} ;
+
+FUNCION ::= FUNCION:tmp CONTENIDO:con{: 
+                Nodo temp = (Nodo)tmp;
+                temp.addHijo((Nodo)con);
+                RESULT=temp;
+            :}
+            | funcion id:i pari PARAMETRO:e1 lli {: 
+                Nodo tmp = new Nodo("FUNCION");
+                tmp.setNumNodo(parser.contador++); 
+                tmp.addHijo((Nodo)e1);
+                RESULT=tmp;
+            :};
+
+PARAMETRO ::= PARAMETROS:tmp parf {: 
+                 RESULT=tmp;
+             :}
+             | parf {: 
+                Nodo tmp = new Nodo("PARAMETROS");
+                tmp.setNumNodo(parser.contador++); 
+                RESULT=tmp;
+             :};
+
+PARAMETROS ::= PARAMETROS:tmp coma id:i {: 
+                Nodo temp = (Nodo) tmp;
+                Nodo tmps = new Nodo("PARAMETRO");
+                tmps.setNombre(i.toString());
+                tmps.setNumNodo(parser.contador++);
+                temp.addHijo(tmps);
+                RESULT = temp;
+            :}
+             | id:i {: 
+                Nodo tmp = new Nodo("PARAMETROS");
+                Nodo tmps = new Nodo("PARAMETRO");
+                tmp.setNumNodo(parser.contador++);
+                tmps.setNumNodo(parser.contador++);
+                tmps.setNombre(i.toString());
+                tmp.addHijo(tmps); 
+                RESULT=tmp;
+             :} ;
+
+RETORNAR ::= retornar E0:e1 {: 
+                Nodo tmp = new Nodo("RETORNAR");
+                tmp.setNumNodo(parser.contador++); 
+                tmp.addHijo((Nodo)e1);
+                RESULT=tmp;
+            :} ;
+
+LLAMADA ::= id:i pari LLPARAMETRO:con {: 
+                Nodo tmp = new Nodo("LLAMADA");
+                tmp.setNumNodo(parser.contador++);
+                tmp.setValor(i.toString());
+                tmp.addHijo((Nodo)con);
+                RESULT=tmp;
+            :};
+
+LLPARAMETRO ::=  LLPARAMETROS:tmp parf {: 
+                    RESULT=tmp;
+                :}
+                | parf {: 
+                    Nodo tmp = new Nodo("PARAMETROS");
+                    tmp.setNumNodo(parser.contador++); 
+                    RESULT=tmp;
+                 :} ; 
+
+LLPARAMETROS ::= LLPARAMETROS:tmp coma E0:e1 {: 
+                    Nodo temp = (Nodo)tmp;
+                    temp.addHijo((Nodo)e1);
+                    RESULT=temp;
+                :}
+                | E0:e1 {: 
+                    Nodo tmp = new Nodo("PARAMETROS");
+                    tmp.setNumNodo(parser.contador++);
+                    tmp.addHijo((Nodo)e1); 
+                    RESULT=tmp;
+                :} ;
+
+MENSAJE ::= mensaje pari E0:e1 parf {:
+            Nodo tmp = new Nodo("MENSAJE");
+            tmp.setNumNodo(parser.contador++);
+            tmp.addHijo((Nodo)e1); 
+            RESULT=tmp;
+         :};
+
+DOCUMENTO ::= documento OBTENER:e1 {: 
+                 Nodo tmp = new Nodo("DOCUMENTO");
+                 tmp.setNumNodo(parser.contador++);
+                 tmp.addHijo((Nodo)e1); 
+                 RESULT=tmp;
+            :}
+              | documento OBSERVADOR:e1 {: 
+                    Nodo tmp = new Nodo("DOCUMENTO");
+                    tmp.setNumNodo(parser.contador++);
+                    tmp.addHijo((Nodo)e1); 
+                    RESULT=tmp;
+                :};
+
+OBTENER ::= pt obtener pari cadena:i OBSET:con{: 
+            Nodo tmp = (Nodo)con;    
+            String str = i.toString();
+            String ncadena=str.substring(1,str.length()-1);
+            tmp.setValor(ncadena);
+            tmp.setNumNodo(parser.contador++); 
+            RESULT=tmp; 
+        :};
+
+OBSET ::=  parf SETELEM:con {: 
+            Nodo tmp = new Nodo("OBTENER");
+            tmp.setNumNodo(parser.contador++);
+            tmp.addHijo((Nodo)con);
+            RESULT=tmp; 
+         :}
+         | parf {: 
+            Nodo tmp = new Nodo("OBTENER");
+            tmp.setNumNodo(parser.contador++);
+            RESULT=tmp; 
+         :} ;
+
+ID_OBS ::= id:i OBSERVADOR:con {: 
+                Nodo tmp = new Nodo("ID_OBS");
+                tmp.setNumNodo(parser.contador++);
+                tmp.setValor(i.toString());
+                tmp.addHijo((Nodo)con);
+                RESULT=tmp;
+          :};
+
+OBSERVADOR ::= pt observador pari cadena:i coma CUAL:con parf {: 
+                Nodo tmp = new Nodo("OBSERVADOR");
+                tmp.setNumNodo(parser.contador++);
+                String str = i.toString();
+                String ncadena=str.substring(1,str.length()-1);
+                tmp.setValor(ncadena);
+                tmp.addHijo((Nodo)con);
+                RESULT=tmp;
+            :};
+
+CUAL ::= LLAMADA:tmp {: 
+            RESULT=tmp;
+        :}
+        | NEWFUNCION:tmp llf {: 
+            RESULT=tmp;
+        :};
+
+SETELEM ::= pt setelemento pari cadena:i1 coma cadena:i2 parf {: 
+                Nodo tmp = new Nodo("SET_ELEM");
+                tmp.setNumNodo(parser.contador++);
+                String str1 = i1.toString();
+                String str2 = i2.toString();
+                String ncadena1=str1.substring(1,str1.length()-1);
+                String ncadena2=str2.substring(1,str2.length()-1);
+                Nodo vat = new Nodo(ncadena1);
+                vat.setValor(ncadena2);
+                tmp.addHijo((Nodo)vat);
+                RESULT=tmp;
+            :}; 
+
+SETELEMENTO ::= id:i SETELEM:con {: 
+                Nodo temp = (Nodo)con;
+                temp.setValor(i.toString());
+                RESULT=temp;
+                :} ;
+
+NEWFUNCION ::=  NEWFUNCION:tmp CONTENIDO:con {: 
+                   Nodo temp;
+                   temp = (Nodo) tmp;
+                   temp.addHijo((Nodo)con);
+                   RESULT = temp;
+                :}
+              | newfuncion lli {: 
+                    Nodo tmp = new Nodo("NEWFUNCION");
+                    tmp.setNumNodo(parser.contador++);
+                    RESULT = tmp;
+               :} ;
+
+
+

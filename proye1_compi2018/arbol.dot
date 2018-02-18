@@ -1,5 +1,5 @@
 digraph G {node[shape=box, style=filled, color=blanchedalmond]; edge[color=chocolate3];rankdir=UD 
 
-"1_INICIO=null"->"6_ASIGNACION=probando""6_ASIGNACION=probando"->"5_SUMA=null""5_SUMA=null"->"2_NUMERO=5""5_SUMA=null"->"4_VECTOR=null""4_VECTOR=null"->"3_NUMERO=2"
+"1_INICIO=null"->"6_DOCUMENTO=null""6_DOCUMENTO=null"->"5_OBSERVADOR=listo""5_OBSERVADOR=listo"->"2_NEWFUNCION=null""2_NEWFUNCION=null"->"4_IMPRIMIR=null""4_IMPRIMIR=null"->"3_CADENA=Documento listo""1_INICIO=null"->"10_DIMV_ASIGNACION=mi_boton""10_DIMV_ASIGNACION=mi_boton"->"9_DOCUMENTO=null""9_DOCUMENTO=null"->"8_OBTENER=mi_boton""1_INICIO=null"->"12_FUNCION=null""12_FUNCION=null"->"11_PARAMETROS=null""12_FUNCION=null"->"14_IMPRIMIR=null""14_IMPRIMIR=null"->"13_CADENA=Estas dentro de mi_funcion""1_INICIO=null"->"18_ID_OBS=Mi_boton""18_ID_OBS=Mi_boton"->"17_OBSERVADOR=clic""17_OBSERVADOR=clic"->"16_LLAMADA=mi_funcion""16_LLAMADA=mi_funcion"->"15_PARAMETROS=null"
 
 }
