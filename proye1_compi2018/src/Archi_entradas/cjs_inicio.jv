@@ -1,0 +1,37 @@
+Dimv a;
+Dimv v : {2,1};
+imprimir(v{0});
+
+DIMv b:5;
+Dimv c:10;
+dimv d: fibonacci(11);
+imprimir("valor de d:"+d);
+funcion numero(){
+	mensaje("Nuevo mundo");
+}
+
+funcion prueba(n){
+
+	si(n>10){   
+       imprimir(n); 
+    }
+    si(10<10){
+    		n : n + 1;
+			imprimir("valor de n:"+n);
+			RETORNAR N;
+    }
+    si(n==10){
+    	imprimir("valor de n:"+(n+b));
+    }
+}
+
+funcion fibonacci(n)
+{
+	si (n <= 1) {
+		 retornar n; 
+	}sino{ 
+		 retornar fibonacci(n-1) + fibonacci(n-2); 
+	}
+}
+
+

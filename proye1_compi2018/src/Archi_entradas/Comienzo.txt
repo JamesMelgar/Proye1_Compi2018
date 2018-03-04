@@ -1,0 +1,109 @@
+<CHTML>
+<ENCABEZADO>
+<CJS ruta = "C:/fichero/fichero_1.cjs";> <FIN-CJS>
+<CJS ruta = "C:/fichero/fichero_1.cjs";> <FIN-CJS>
+<TITULO> USAC- WEB <FIN-TITULO>
+<FIN-ENCABEZADO>
+<CUERPO>
+<IMAGEN click=metodo()> c://proyecto1/clase.gif <FIN-IMAGEN>
+<TEXTO>mundo<FIN-TEXTO>
+<PANEL>
+<TEXTO>mundo<FIN-TEXTO>
+<FIN-PANEL>
+<FIN-CUERPO>
+<FIN-CHTML>
+
+Dimv v1;
+Dimv v2 : "Ejemplo";
+imprimir(v1);
+imprimir(v2);
+Dimv mivector: {14, 240, 350};
+mivector{1} : "ejemplo";
+Dimv mieje{3};
+mieje : mivector;
+imprimir(mieje{2});
+mivector: {15, 1 , 12};
+imprimir(mivector{2});
+
+SI('TRUE'){
+	imprimir("Entro en si");
+	Dimv v3 : "uno";
+	imprimir(v3);
+}
+imprimir("variable:");
+imprimir(v3);
+SI('FALSE'){
+	imprimir("Entro en sii");
+}SINO{
+	imprimir("Entro en sino");
+}
+
+
+funcion fibonacci(n)
+{
+    si(n>1){
+       retornar fibonacci(n-1) + fibonacci(n-2); 
+    }
+    si(n==1) {  // caso base
+        retornar 1;
+    }
+    si (n==0){  // caso base
+        retornar 0;
+    }sino{ //error
+        imprimir("Debes ingresar un tamaño mayor o igual a 1");
+        return -1; 
+    }
+}
+
+funcion fibonacci(n)
+{
+	si (n <= 1) {
+		 imprimir("uno"+n);
+		 retornar n; 
+	}sino{ 
+	     imprimir ("interacion:"+(n-1)+"dos"+(n-2));
+		 retornar fibonacci(n-1) + fibonacci(n-2); 
+	}
+}
+
+<BOTON> Enviar <FIN-BOTON>
+		<BOTON click="salida_consola()";> Este es un botón <FIN-BOTON>
+		<BOTON ruta="c://pro_1/index.chtml";> Principal <FIN-BOTON>
+
+<CAJA>
+ 			<OPCION valor="1";>Uno<FIN-OPCION>
+ 			<OPCION valor="2";>Dos<FIN-OPCION>
+ 			<OPCION valor="3";>Tres<FIN-OPCION>
+ 			<OPCION valor="4";>4<FIN-OPCION>
+		<FIN-CAJA>
+		<CAJA_TEXTO> Contenido en la caja de texto <FIN-CAJA_TEXTO>
+		<SPINNER>15<FIN-SPINNER> 
+		<Panel id="panel1"; Grupo="grupo1"; alto="300"; ancho="200";>
+			<TEXTO alineado="DERECHA";>mun
+do<FIN-TEXTO>
+	<Salto-FIN>
+	<TEXTO alineado="CENTRADO";>Hola<FIN-TEXTO>
+		<Salto-FIN>
+		<FIN-Panel>
+
+			<Panel id="panel1"; Grupo="grupo1"; alto="300"; ancho="300";>
+			<IMAGEN alto="200"; ancho="100"; alineado="DERECHA";>C://Users/James_PC/Pictures/foto_Carne.jpg<FIN-IMAGEN>
+			<TEXTO_A alineado="DERECHA";> Nombre <FIN-TEXTO_A>
+		<FIN-Panel>
+			<Salto-FIN>
+		<BOTON alto="50"; ancho="200"; > Enviar <FIN-BOTON>
+		<BOTON alto="50"; ancho="200";  click="salida_consola()";> Este es un botón <FIN-BOTON>
+			<Salto-FIN>
+		<BOTON alto="50"; ancho="200";  ruta="c://pro_1/index.chtml";> Principal <FIN-BOTON>
+		<ENLACE ruta="c://ruta/ruta.chtml";> Página Ruta <FIN-ENLACE>
+		<Panel id="panel1"; Grupo="grupo1"; alto="300"; ancho="300";>
+			<IMAGEN alto="200"; ancho="100"; alineado="DERECHA";>C://Users/James_PC/Pictures/foto_Carne.jpg<FIN-IMAGEN>
+			<TEXTO_A alineado="DERECHA";> Nombre <FIN-TEXTO_A>
+		<FIN-Panel>
+			<Salto-FIN>
+		<BOTON alto="50"; ancho="200"; > Enviar <FIN-BOTON>
+		<BOTON alto="50"; ancho="200";  click="salida_consola()";> Este es un botón <FIN-BOTON>
+			<Salto-FIN>
+		<BOTON alto="50"; ancho="200";  ruta="c://pro_1/index.chtml";> Principal <FIN-BOTON>
+		<ENLACE ruta="c://ruta/ruta.chtml";> Página Ruta <FIN-ENLACE>
+	<FIN-CUERPO>

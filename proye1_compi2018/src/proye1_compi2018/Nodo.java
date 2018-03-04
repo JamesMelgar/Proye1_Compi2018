@@ -7,12 +7,6 @@ package proye1_compi2018;
 
 import java.util.ArrayList;
 
-/**
- *
- * @author Oscar
- */
-
-
 public class Nodo {
     private String nombre;
     private ArrayList<Nodo> hijos;
@@ -32,16 +26,10 @@ public class Nodo {
         hijos.add(hijo);
     }
 
-    /**
-     * @return the nombre
-     */
     public String getNombre() {
         return nombre;
     }
 
-    /**
-     * @param nombre the nombre to set
-     */
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }

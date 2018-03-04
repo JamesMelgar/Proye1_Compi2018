@@ -1,0 +1,34 @@
+<CHTML>
+
+	<ENCABEZADO>
+		<TITULO> USNuevoAC-WEB <FIN-TITULO>
+		<CJS ruta= "C:\Users\James_PC\Documents\NetBeansProjects\pr1compi2\Proye1_Compi2018\proye1_compi2018\src\Archi_entradas\cjs_inicio.jv";> <FIN-CJS>
+		<CCSS ruta= "C:\Users\James_PC\Documents\NetBeansProjects\pr1compi2\Proye1_Compi2018\proye1_compi2018\src\Archi_entradas\ccss_inicio.csc";> <FIN-CCSS>
+	<FIN-ENCABEZADO>
+	
+	<CUERPO fondo="Black";>
+		<Panel id="panel1"; Grupo="grupo1"; alto="300"; ancho="500";>
+			<IMAGEN alto="200"; ancho="100"; alineado="DERECHA";>C://Users/James_PC/Pictures/foto_Carne.jpg<FIN-IMAGEN>
+			<Salto-FIN>
+			<TEXTO alineado="IZQUIERDA"; Grupo="texto1"; ancho="200";> Nombre: James Melgar <FIN-TEXTO>
+			<BOTON ancho="200";  alineado="IZQUIERDA"; click="salida_consola()";> Ver Perfil <FIN-BOTON>
+			<Salto-FIN>
+			<TEXTO alineado="DERECHA"; Grupo="texto1"; ancho="200";> Carne: 201314716 <FIN-TEXTO>
+			<ENLACE ruta="c://ruta/ruta.chtml"; Grupo="texto1";> Otros Datos <FIN-ENLACE>
+		<FIN-Panel>
+		<Salto-FIN>
+		<Panel id="panel1"; Grupo="grupo1"; alto="300"; ancho="500";>
+			<IMAGEN alto="200"; ancho="100";  Grupo="texto1"; alineado="DERECHA";>C://Users/James_PC/Pictures/flash.jpg<FIN-IMAGEN>
+			<Salto-FIN>
+			<TEXTO alineado="DERECHA"; Grupo="texto1"; ancho="200";> Carne: No tiene <FIN-TEXTO>
+			<TEXTO_A alineado="DERECHA"; Grupo="texto1"; > Juan Perez 
+				molina <FIN-TEXTO_A>
+		<FIN-Panel>
+		<Panel>
+			<CAJA_TEXTO id="Caja";> Contenido en la caja de texto <FIN-CAJA_TEXTO>
+		<Fin-Panel>
+			<SPINNER Grupo="texto1"; alineado="DERECHA";>15<FIN-SPINNER> 
+			<SPINNER Grupo="texto1"; alineado="CENTRADO";>3<FIN-SPINNER> 
+	<FIN-CUERPO>
+
+<FIN-CHTML>

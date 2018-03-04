@@ -1,0 +1,34 @@
+Titular_ccss [
+	GRUPO (grupo_areas_1);
+		Formato := mayuscula, NEGRILLA, capital-t;
+		Letra := "Courier New";
+		Tamtex := 15.5;
+		Tamelemento := [150, 75];
+		Fondoelemento := "green";
+		SelectTextColor:= "blue";
+		ColorSelect := "black";
+		IdElemento := area15;
+]
+
+GRUPO (grupo_areas_2);
+Formato := mayuscula, NEGRILLA, capital-t;
+Letra := "Courier New";
+Tamtex := 13;
+Tamelemento := [200, 200];
+//Fin Grupo_areas_2
+//Inicio identificador_1
+ID (identificador_1);
+Formato := mayuscula, NEGRILLA, capital-t;
+Letra := "Arial";
+Tamtex := 12;
+Tamelemento := [50, 50];
+]
+//Fin identificador_1
+caja_de_texto [
+ID (identificador_2);
+Formato := NEGRILLA;
+Letra := "Arial";
+Tamtex := 18;
+Tamelemento := [150, 75];
+IdElemento := caja25;
+]

@@ -7,20 +7,27 @@ parser code
 	public String resultado="";
 	public Nodo padre;
 	public int contador = 1;
+  public String verror = "";
     @Override
     public void syntax_error(Symbol s){
         System.out.println("Error Sintactico en la Linea " + (s.right+1) +" Columna "+s.left+ ". Identificador " +s.value + " no reconocido." );
+        verror = verror + "Error Sintactico en la Linea " + (s.right+1) +" Columna "+s.left+ ". Identificador " +
+          s.value + " no reconocido."+" CHTML"+"\n" ;
     }
 
     @Override
     public void unrecovered_syntax_error(Symbol s){
-        //System.out.println("Error Sintactico en la Linea " + (s.right+1)+ "Columna "+s.left+". Identificador " + s.value + " no reconocido.");
+      /*
+        System.out.println("Error Sintactico en la Linea " + (s.right+1)+ "Columna "+s.left+
+            ". Identificador " + s.value + " no reconocido.");
+        verror= verror+ "Error Sintactico en la Linea " + (s.right+1) +" Columna "+s.left+
+        ". Identificador " +s.value + " no reconocido."+" CHTML"+"\n" ;  */
     }
 :}
 
 action code
 {:
-
+   
 :}
 
 terminal htmli, htmlf, cuerpoi, cuerpof, encabezadoi, encabezadof, cjsi, cjsf, ccssi, ccssf, ptc, cierre, ruta;
@@ -33,7 +40,7 @@ non terminal INICIO;
 
 non terminal SENTENCIAS , MEDIO, ENCABEZADO, INT_ENCABEZADO, CUERPO, INT_CUERPO, ELEMENTO, COMPLEMETO,
             TITULO, CONTENIDO, INTERNO_TITULO, TABLA, DENTRO_TABLA, DENTRO_FIL, IMAGEN, BOTON, CELDA,
-            FILL, CONTENIDO_FILL, CAJA_TEXTO, CAJA, DENTRO_CAJA, OPCIONES, SPINNER, SALTO;
+            FILL, CONTENIDO_FILL, CAJA_TEXTO, CAJA, DENTRO_CAJA, OPCIONES, SPINNER, SALTO, TEXTO;
 
 start with INICIO;
 
@@ -42,13 +49,13 @@ INICIO ::= SENTENCIAS:sts abierto htmlf cierre{:
             System.out.println("DOCUMENTO OK"); 
           :};
 
-SENTENCIAS ::= SENTENCIAS:sts MEDIO:md {: 
+SENTENCIAS ::= SENTENCIAS:sts abierto MEDIO:md {: 
                Nodo temp;
                temp = (Nodo) sts;
                temp.addHijo((Nodo)md);
                RESULT=temp;
             :}
-              | htmli cierre {:
+              | abierto htmli cierre {:
                 Nodo tmp = new Nodo("INICIO");
                 tmp.setNumNodo(parser.contador++); 
                 RESULT=tmp;
@@ -69,15 +76,23 @@ TITULO ::= tituloi COMPLEMETO:comp cierre INTERNO_TITULO:con titulof cierre {:
                   tmp.addHijo((Nodo)con);               
                   RESULT=tmp;
           :} ;
+
+TEXTO ::= textoi COMPLEMETO:comp cierre INTERNO_TITULO:con textof cierre {: 
+                  Nodo tmp = new Nodo("TITULO");
+                  tmp.setNumNodo(parser.contador++); 
+                  tmp.addHijo((Nodo)comp);
+                  tmp.addHijo((Nodo)con);               
+                  RESULT=tmp;
+          :} ;
           
-INTERNO_TITULO ::= palabra:i abierto {:  
-                       Nodo tmp = new Nodo("CONTENIDO");
+INTERNO_TITULO ::= palabra:i {:  
+                       Nodo tmp = new Nodo(i.toString());
                        tmp.setNumNodo(parser.contador++); 
                        tmp.setValor(i.toString());
                        RESULT=tmp;
                   :} 
                   | abierto {:  
-                       Nodo tmp = new Nodo("CONTENIDO");
+                       Nodo tmp = new Nodo("");
                        tmp.setNumNodo(parser.contador++); 
                        tmp.setValor(null);
                        RESULT=tmp;
@@ -98,15 +113,15 @@ ENCABEZADO ::= ENCABEZADO:enc INT_ENCABEZADO:inc {:
 
 
 INT_ENCABEZADO ::= cjsi ruta igual cadena:i ptc cierre abierto cjsf cierre{: 
-                    Nodo tmp = new Nodo("cjsi");
+                    Nodo tmp = new Nodo("CJS");
                     String str = i.toString();
                     String ncadena=str.substring(1,str.length()-1);
                     tmp.setValor(ncadena);
                     tmp.setNumNodo(parser.contador++);
                     RESULT=tmp;
               :} 
-                 | ccssi ruta igual  cadena:i ptc cierre abierto ccssf cierre{: 
-                    Nodo tmp = new Nodo("ccss");
+                 | ccssi ruta igual cadena:i ptc cierre abierto ccssf cierre{: 
+                    Nodo tmp = new Nodo("CCSS");
                     String str = i.toString();
                     String ncadena=str.substring(1,str.length()-1);
                     tmp.setValor(ncadena);
@@ -118,7 +133,7 @@ INT_ENCABEZADO ::= cjsi ruta igual cadena:i ptc cierre abierto cjsf cierre{:
               :} ;
 
 IMAGEN ::= imageni COMPLEMETO:comp cierre path:i abierto imagenf cierre {: 
-                    Nodo tmp = new Nodo("imagen");
+                    Nodo tmp = new Nodo("IMAGEN");
                     String str = i.toString();
                     tmp.setValor(str);
                     tmp.setNumNodo(parser.contador++);
@@ -126,8 +141,8 @@ IMAGEN ::= imageni COMPLEMETO:comp cierre path:i abierto imagenf cierre {:
                     RESULT=tmp; 
            :} ;
 
-BOTON  ::= botoni COMPLEMETO:comp cierre palabra:i abierto botonf cierre {: 
-                    Nodo tmp = new Nodo("boton");
+BOTON  ::= botoni COMPLEMETO:comp cierre palabra:i botonf cierre {: 
+                    Nodo tmp = new Nodo("BOTON");
                     String str = i.toString();
                     tmp.setValor(str);
                     tmp.setNumNodo(parser.contador++);
@@ -153,22 +168,14 @@ CUERPO ::= CUERPO:enc INT_CUERPO:inc {:
         :} ;
 
 
-INT_CUERPO ::= textoi COMPLEMETO:comp cierre cadena:i abierto textof cierre {:
-                    Nodo tmp = new Nodo("TEXTO");
-                    String str = i.toString();
-                    String ncadena=str.substring(1,str.length()-1);
-                    tmp.setValor(ncadena);
-                    tmp.setNumNodo(parser.contador++);
-                    tmp.addHijo((Nodo)comp);
+INT_CUERPO ::=  TEXTO:tmp {:
                     RESULT=tmp; 
               :}
-              | textoai COMPLEMETO:comp cierre cadena:i abierto textoaf cierre {:
+              | textoai COMPLEMETO:comp cierre INTERNO_TITULO:con textoaf cierre {:
                     Nodo tmp = new Nodo("TEXTOA");
-                    String str = i.toString();
-                    String ncadena=str.substring(1,str.length()-1);
-                    tmp.setValor(ncadena);
                     tmp.setNumNodo(parser.contador++);
                     tmp.addHijo((Nodo)comp);
+                    tmp.addHijo((Nodo)con);
                     RESULT=tmp; 
               :}
               | CUERPO:tmp abierto panelf cierre {: 
@@ -195,8 +202,8 @@ INT_CUERPO ::= textoi COMPLEMETO:comp cierre cadena:i abierto textof cierre {:
                | SALTO:tmp {:
                   RESULT= tmp;
               :}
-              | enlacei COMPLEMETO:comp cierre palabra:i abierto enlacef cierre {: 
-                    Nodo tmp = new Nodo("enlace");
+              | enlacei COMPLEMETO:comp cierre palabra:i enlacef cierre {: 
+                    Nodo tmp = new Nodo("ENLACE");
                     String str = i.toString();
                     tmp.setValor(str);
                     tmp.setNumNodo(parser.contador++);
@@ -204,7 +211,7 @@ INT_CUERPO ::= textoi COMPLEMETO:comp cierre cadena:i abierto textof cierre {:
                     RESULT=tmp; 
               :}
               | caja:i cierre {:
-                    Nodo tmp = new Nodo("texto");
+                    Nodo tmp = new Nodo("TEXTO");
                     tmp.setValor(i.toString());
                     tmp.setNumNodo(parser.contador++);
                     RESULT=tmp; 
@@ -230,7 +237,7 @@ ELEMENTO ::= ids igual cadena:i ptc {:
                     tmp.setValor(ncadena);       
                     RESULT=tmp;
           :}
-          | fondo igual cadena:i cierre {:
+          | fondo igual cadena:i ptc {:
                      Nodo tmp = new Nodo("FONDO");
                     String str = i.toString();
                     String ncadena=str.substring(1,str.length()-1);
@@ -356,17 +363,17 @@ CELDA ::= BOTON:tmp abierto{:
         :}
         | abierto {: 
           Nodo tmp = new Nodo("PALABRA");
-          tmp.setValor(null);;
+          tmp.setValor("");
           RESULT=tmp;
         :} 
-        |palabra:i abierto {:
+        |palabra:i {:
                   Nodo tmp = new Nodo("PALABRA");
                   tmp.setValor(i.toString());
                   tmp.setNumNodo(parser.contador++); 
                   RESULT=tmp;
         :};
 
-CAJA_TEXTO ::= cajati COMPLEMETO:comp cierre CONTENIDO:con cajatf cierre {:
+CAJA_TEXTO ::= cajati COMPLEMETO:comp cierre INTERNO_TITULO:con cajatf cierre {:
                   Nodo tmp = new Nodo("CAJA_TEXTO");
                   Nodo temp;
                   temp = (Nodo) con;
@@ -388,7 +395,7 @@ CONTENIDO ::= palabra:i abierto{:
                   RESULT=tmp;
                 :};
 
-SPINNER ::= spinneri COMPLEMETO:comp cierre CONTENIDO:con spinnerf cierre{:
+SPINNER ::= spinneri COMPLEMETO:comp cierre INTERNO_TITULO:con spinnerf cierre{:
                   Nodo tmp = new Nodo("SPINNER");
                   Nodo temp;
                   temp = (Nodo) con;
@@ -414,7 +421,7 @@ DENTRO_CAJA ::= DENTRO_CAJA:i OPCIONES:el {:
           :};
 
 
-OPCIONES ::= opcioni COMPLEMETO:com cierre palabra:i abierto opcionf cierre {: 
+OPCIONES ::= opcioni COMPLEMETO:com cierre palabra:i  opcionf cierre {: 
                   Nodo tmp = new Nodo("OPCION");
                   tmp.setValor(i.toString());  
                   tmp.addHijo((Nodo)com);

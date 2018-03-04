@@ -30,7 +30,7 @@ numero = {digito}+("."{digito}+)?
 
 %{
 //VARIALES Y METODOS DEL SCANER
-public String Cerror="";
+
 %}
 
 %%	
@@ -96,8 +96,6 @@ public String Cerror="";
 
 
 /* ERRORES LEXICOS */
-.               { System.out.println("Error lexico: "+yytext() + " Linea: "+yyline + " Columna: "+yycolumn);
-Cerror = Cerror + "Error lexico: "+yytext() + " Linea: "+yyline +
-		   " Columna: "+yycolumn + "T-archivo: CJS"+"/n"; }
+.               { System.out.println("Error lexico: "+yytext() + " Linea: "+yyline + " Columna: "+yycolumn);}
 
 }

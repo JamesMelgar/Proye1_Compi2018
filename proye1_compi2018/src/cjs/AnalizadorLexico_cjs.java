@@ -501,7 +501,7 @@ public class AnalizadorLexico_cjs implements java_cup.runtime.Scanner {
 
   /* user code: */
 //VARIALES Y METODOS DEL SCANER
-
+public String Cerror="";
 
 
   /**
@@ -889,6 +889,8 @@ public class AnalizadorLexico_cjs implements java_cup.runtime.Scanner {
         switch (zzAction < 0 ? zzAction : ZZ_ACTION[zzAction]) {
           case 1: 
             { System.out.println("Error lexico: "+yytext() + " Linea: "+yyline + " Columna: "+yycolumn);
+Cerror = Cerror + "Error lexico: "+yytext() + " Linea: "+yyline +
+		   " Columna: "+yycolumn + "T-archivo: CJS"+"/n";
             }
           case 54: break;
           case 2: 

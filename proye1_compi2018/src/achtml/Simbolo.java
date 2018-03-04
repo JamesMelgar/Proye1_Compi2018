@@ -8,46 +8,45 @@ package achtml;
 /** CUP generated class containing symbol constants. */
 public class Simbolo {
   /* terminals */
-  public static final int palabra = 55;
+  public static final int palabra = 54;
   public static final int ancho = 29;
   public static final int fondo = 19;
   public static final int ptc = 12;
   public static final int htmli = 2;
   public static final int igual = 15;
   public static final int htmlf = 3;
-  public static final int opcioni = 61;
-  public static final int opcionf = 60;
-  public static final int tablai = 58;
+  public static final int opcioni = 60;
+  public static final int opcionf = 59;
+  public static final int tablai = 57;
   public static final int alto = 28;
-  public static final int tablaf = 59;
+  public static final int tablaf = 58;
   public static final int abierto = 25;
   public static final int grupo = 27;
   public static final int cierre = 13;
-  public static final int fili = 46;
+  public static final int fili = 45;
   public static final int alineado = 30;
   public static final int paneli = 22;
   public static final int ruta = 14;
-  public static final int filf = 52;
+  public static final int filf = 51;
   public static final int panelf = 23;
   public static final int ccss = 31;
-  public static final int cbi = 45;
-  public static final int cbf = 51;
+  public static final int cbi = 44;
+  public static final int cbf = 50;
   public static final int EOF = 0;
   public static final int cuerpoi = 4;
   public static final int cuerpof = 5;
-  public static final int spinneri = 56;
+  public static final int spinneri = 55;
   public static final int error = 1;
   public static final int imageni = 20;
-  public static final int spinnerf = 57;
-  public static final int cti = 44;
-  public static final int cajat = 39;
+  public static final int spinnerf = 56;
+  public static final int cti = 43;
   public static final int imagenf = 21;
-  public static final int textoai = 53;
-  public static final int valor = 49;
+  public static final int textoai = 52;
+  public static final int valor = 48;
   public static final int ccssi = 10;
-  public static final int ctf = 50;
+  public static final int ctf = 49;
   public static final int encabezadoi = 6;
-  public static final int textoaf = 54;
+  public static final int textoaf = 53;
   public static final int ccssf = 11;
   public static final int encabezadof = 7;
   public static final int click = 33;
@@ -56,19 +55,19 @@ public class Simbolo {
   public static final int textoi = 17;
   public static final int cjsi = 8;
   public static final int textof = 18;
-  public static final int enlacei = 42;
+  public static final int enlacei = 41;
   public static final int cjsf = 9;
-  public static final int enlacef = 43;
+  public static final int enlacef = 42;
   public static final int path = 32;
   public static final int caja = 24;
   public static final int salto = 38;
-  public static final int cajati = 47;
-  public static final int cajatf = 48;
+  public static final int cajati = 46;
+  public static final int cajatf = 47;
   public static final int tituloi = 34;
-  public static final int botoni = 40;
+  public static final int botoni = 39;
   public static final int titulof = 35;
   public static final int cadena = 16;
-  public static final int botonf = 41;
+  public static final int botonf = 40;
   public static final int ids = 26;
   public static final String[] terminalNames = new String[] {
   "EOF",
@@ -110,7 +109,6 @@ public class Simbolo {
   "cajai",
   "cajaf",
   "salto",
-  "cajat",
   "botoni",
   "botonf",
   "enlacei",

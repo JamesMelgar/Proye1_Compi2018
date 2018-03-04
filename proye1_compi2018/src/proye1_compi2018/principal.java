@@ -17,7 +17,7 @@ public class principal extends javax.swing.JFrame {
     public principal() {
         initComponents();
     }
-
+    public static int contador_tab=0;
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -65,11 +65,15 @@ public class principal extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(multiplepanel, javax.swing.GroupLayout.DEFAULT_SIZE, 812, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(multiplepanel, javax.swing.GroupLayout.PREFERRED_SIZE, 1313, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(multiplepanel, javax.swing.GroupLayout.DEFAULT_SIZE, 376, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(multiplepanel, javax.swing.GroupLayout.PREFERRED_SIZE, 682, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
@@ -77,11 +81,16 @@ public class principal extends javax.swing.JFrame {
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         // TODO add your handling code here:
-        navegador ej = new navegador();
+        navegador ej = new navegador(contador_tab, multiplepanel);
         multiplepanel.addTab("mundo", ej);
-        //v.show();
+        multiplepanel.setTitleAt(contador_tab, "texto"); 
+        ++contador_tab;
+        
     }//GEN-LAST:event_jMenuItem1ActionPerformed
-
+    
+    public static void cambiar_nombre(String nombre, int numero, javax.swing.JTabbedPane pestaña){
+         pestaña.setTitleAt(contador_tab, nombre); 
+    }
     /**
      * @param args the command line arguments
      */
@@ -116,7 +125,6 @@ public class principal extends javax.swing.JFrame {
             }
         });
     }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem historial;
     private javax.swing.JMenu jMenu1;

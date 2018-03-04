@@ -1,0 +1,354 @@
+package ccss;
+import java_cup.runtime.Symbol;
+import proye1_compi2018.Nodo;
+
+parser code
+{:
+    public String resultado="";
+    public Nodo padre;
+    public int contador = 1;
+    public String verror = "";
+    @Override
+    public void syntax_error(Symbol s){
+        System.out.println("Error Sintactico en la Linea " + (s.right+1) +" Columna "+s.left+ ". Identificador " +s.value + " no reconocido." );
+        verror = verror + "Error Sintactico en la Linea " + (s.right+1) +" Columna "+s.left+ ". Identificador " +
+          s.value + " no reconocido."+" CCSS"+"\n" ;
+    }
+
+    @Override
+    public void unrecovered_syntax_error(Symbol s){
+        //System.out.println("Error Sintactico en la Linea " + (s.right+1)+ "Columna "+s.left+". Identificador " + s.value + " no reconocido.");
+    }
+:}
+
+action code
+{:
+
+:}
+
+
+terminal suma, resta, multiplicacion, division, texto, letra, tamtex, fondoelemento, pyc, 
+         autoredimension, cori, corf, visible, borde, opaque, colortext, grupo, ids, asig,coma, 
+         pari, parf, izquierda, derecha, centrado, justificado, alineado, negrilla, cursiva,
+         mayuscula, minuscula, capital, formato, id, cadena, bool, numero, horizontal, vertical;
+
+non terminal S0, INICIO, DEFINICION, EDITADO, CONTENIDO, E0, TIPO; 
+non terminal ALINEADO, TIPO_ALI, FORMATO, TIPO_FORMATO, EXPRESION, TEXTO, LETRA, TAMTEX,
+             FONDOELEMENTO, AUTO, TIPO_AUTO, VISIBLE, BORDE, OPAQUE, COLORTEXT;
+
+precedence left suma, resta;
+precedence left multiplicacion, division;
+
+start with S0;
+
+S0 ::= INICIO:inc {: 
+        parser.padre = (Nodo) inc;
+        System.out.println("DOCUMENTO OK"); 
+    :};
+
+INICIO ::= INICIO:tmp DEFINICION:con corf {: 
+                Nodo temp;
+                temp = (Nodo) tmp;
+                temp.addHijo((Nodo)con);
+                RESULT = temp;
+            :}
+         |  {:  
+                Nodo tmp = new Nodo("INICIO");
+                tmp.setNumNodo(parser.contador++); 
+                RESULT=tmp;
+           :} ;
+
+DEFINICION ::= DEFINICION:tmp EDITADO:con {: 
+                Nodo temp;
+                temp = (Nodo) tmp;
+                temp.addHijo((Nodo)con);
+                RESULT = temp;
+            :}
+              | id:i cori {: 
+                     Nodo tmp = new Nodo("DEFINICION");
+                     tmp.setNumNodo(parser.contador++); 
+                     tmp.setValor(i.toString());
+                     RESULT=tmp;
+                :};
+
+EDITADO ::= EDITADO:tmp CONTENIDO:con {: 
+                Nodo tep = (Nodo) tmp;
+                tep.addHijo((Nodo)con);
+                RESULT=tmp; 
+            :}
+            | grupo pari id:i parf pyc {: 
+                Nodo tmp = new Nodo("GRUPO");
+                tmp.setNumNodo(parser.contador++); 
+                tmp.setValor(i.toString());
+                RESULT=tmp;
+             :}
+            | ids pari id:i parf pyc {: 
+                Nodo tmp = new Nodo("IDS");
+                tmp.setNumNodo(parser.contador++); 
+                tmp.setValor(i.toString());
+                RESULT=tmp;
+             :};
+
+CONTENIDO ::= TEXTO:tmp pyc {:
+                RESULT=tmp;
+            :}
+            | FORMATO:tmp pyc {: 
+                RESULT=tmp;
+            :}
+            | LETRA:tmp pyc {: 
+                RESULT=tmp;
+            :}
+            | TAMTEX:tmp pyc {: 
+                RESULT=tmp;
+            :}
+            | FONDOELEMENTO:tmp pyc {: 
+                RESULT=tmp;
+            :}
+            | AUTO:tmp pyc {: 
+                RESULT=tmp;
+            :}
+            | VISIBLE:tmp pyc {: 
+                RESULT=tmp;
+            :}
+            | BORDE:tmp pyc {: 
+                RESULT=tmp;
+            :}
+            | OPAQUE:tmp pyc {: 
+                RESULT=tmp;
+            :}
+            | COLORTEXT:tmp pyc {: 
+                RESULT=tmp;
+            :}
+            | ALINEADO:tmp pyc {: 
+                RESULT=tmp;
+            :};
+
+TEXTO ::= texto asig E0:e1 {: 
+            Nodo tmp = new Nodo("TEXTO");
+            tmp.setNumNodo(parser.contador++); 
+            tmp.addHijo((Nodo)e1);
+            RESULT=tmp;
+        :};
+
+E0 ::= EXPRESION:tmp {: 
+            RESULT=tmp;
+        :};
+
+EXPRESION ::= EXPRESION:e1 suma EXPRESION:e2{:
+                Nodo tmp = new Nodo("SUMA");
+                tmp.setNumNodo(parser.contador++); 
+                tmp.addHijo((Nodo)e1);
+                tmp.addHijo((Nodo)e2);
+                RESULT=tmp;
+            :}
+            | EXPRESION:e1 resta EXPRESION:e2{:
+                Nodo tmp = new Nodo("RESTA");
+                tmp.setNumNodo(parser.contador++); 
+                tmp.addHijo((Nodo)e1);
+                tmp.addHijo((Nodo)e2);
+                RESULT=tmp;
+            :}
+            | EXPRESION:e1 multiplicacion EXPRESION:e2{:
+                Nodo tmp = new Nodo("MULTIPLICACION");
+                tmp.setNumNodo(parser.contador++); 
+                tmp.addHijo((Nodo)e1);
+                tmp.addHijo((Nodo)e2);
+                RESULT=tmp;
+            :}
+            | EXPRESION:e1 division EXPRESION:e2{:
+                Nodo tmp = new Nodo("DIVISION");
+                tmp.setNumNodo(parser.contador++); 
+                tmp.addHijo((Nodo)e1);
+                tmp.addHijo((Nodo)e2);
+                RESULT=tmp;
+            :}
+            | pari EXPRESION:c1 parf {: 
+                RESULT = c1;
+            :}
+            | TIPO:tmp {: 
+                RESULT=tmp;
+            :};
+
+TIPO ::= cadena:i {: 
+            Nodo tmp = new Nodo("CADENA");
+            String str = i.toString();
+            String ncadena=str.substring(1,str.length()-1);
+            tmp.setValor(ncadena);
+            tmp.setNumNodo(parser.contador++); 
+            RESULT=tmp; 
+        :}
+        | bool:i {: 
+            Nodo tmp = new Nodo("BOOL");
+            tmp.setValor(i.toString());
+            tmp.setNumNodo(parser.contador++); 
+            RESULT=tmp; 
+        :}
+        | numero:i {: 
+            Nodo tmp = new Nodo("NUMERO");
+            tmp.setValor(i.toString());
+            tmp.setNumNodo(parser.contador++); 
+            RESULT=tmp; 
+            :}
+        | id:i {: 
+            Nodo tmp = new Nodo("ID");
+            tmp.setValor(i.toString());
+            tmp.setNumNodo(parser.contador++); 
+            RESULT=tmp; 
+        :} ;
+
+ALINEADO ::= alineado asig TIPO_ALI:con {:
+                Nodo temp = (Nodo)con; 
+                Nodo tmp = new Nodo("ALINEADO");
+                tmp.setNumNodo(parser.contador++); 
+                tmp.setValor(temp.getNombre());
+                RESULT=tmp; 
+            :} ;
+
+TIPO_ALI ::= izquierda {: 
+                Nodo tmp = new Nodo("IZQUIERDA");
+                tmp.setNumNodo(parser.contador++); 
+                RESULT=tmp; 
+            :}
+            | derecha {: 
+                Nodo tmp = new Nodo("DERECHA");
+                tmp.setNumNodo(parser.contador++); 
+                RESULT=tmp; 
+            :}
+            | centrado {: 
+                Nodo tmp = new Nodo("CENTRADO");
+                tmp.setNumNodo(parser.contador++); 
+                RESULT=tmp; 
+            :}
+            | justificado {: 
+                Nodo tmp = new Nodo("JUSTIFICADO");
+                tmp.setNumNodo(parser.contador++); 
+                RESULT=tmp; 
+            :} ;
+
+FORMATO ::= FORMATO:tmp coma TIPO_FORMATO:con {: 
+                Nodo tep = (Nodo) tmp;
+                tep.addHijo((Nodo)con);
+                RESULT=tmp; 
+            :}
+            | formato asig TIPO_FORMATO:con {: 
+                Nodo tmp = new Nodo("FORMATO");
+                tmp.setNumNodo(parser.contador++); 
+                tmp.addHijo((Nodo)con);
+                RESULT=tmp; 
+            :} ;
+
+TIPO_FORMATO ::= negrilla {: 
+                    Nodo tmp = new Nodo("NEGRILLA");
+                    tmp.setNumNodo(parser.contador++); 
+                    RESULT=tmp; 
+                :}
+                | cursiva {: 
+                    Nodo tmp = new Nodo("CURSIVA");
+                    tmp.setNumNodo(parser.contador++); 
+                    RESULT=tmp; 
+                :}
+                | mayuscula {: 
+                    Nodo tmp = new Nodo("MAYUSCULA");
+                    tmp.setNumNodo(parser.contador++); 
+                    RESULT=tmp; 
+                :}
+                | minuscula {: 
+                    Nodo tmp = new Nodo("MINUSCULA");
+                    tmp.setNumNodo(parser.contador++); 
+                    RESULT=tmp; 
+                :}
+                | capital {: 
+                    Nodo tmp = new Nodo("CAPITAL");
+                    tmp.setNumNodo(parser.contador++); 
+                    RESULT=tmp; 
+                :} ;
+
+LETRA ::= letra asig cadena:i {: 
+            Nodo tmp = new Nodo("LETRA");
+            tmp.setNumNodo(parser.contador++);
+            String str = i.toString();
+            String ncadena=str.substring(1,str.length()-1);
+            tmp.setValor(ncadena); 
+            RESULT=tmp; 
+        :};
+
+TAMTEX ::= tamtex asig numero:i {: 
+            Nodo tmp = new Nodo("TAMTEX");
+            tmp.setNumNodo(parser.contador++);
+            tmp.setValor(i.toString()); 
+            RESULT=tmp; 
+        :};
+
+FONDOELEMENTO ::= fondoelemento asig cadena:i {: 
+                    Nodo tmp = new Nodo("FONDOELEMENTO");
+                    tmp.setNumNodo(parser.contador++);
+                    String str = i.toString();
+                    String ncadena=str.substring(1,str.length()-1);
+                    tmp.setValor(ncadena); 
+                    RESULT=tmp; 
+                :};
+
+AUTO ::= autoredimension asig cori bool:i coma TIPO_AUTO:con corf {: 
+                    Nodo tmp = new Nodo("AUTO");
+                    tmp.setNumNodo(parser.contador++);
+                    Nodo temp = (Nodo)con;
+                    temp.setNombre(i.toString());
+                    tmp.addHijo(temp); 
+                    RESULT=tmp; 
+         :};
+
+TIPO_AUTO ::= horizontal {: 
+                Nodo tmp = new Nodo("");
+                tmp.setValor("HORIZONTAL");
+                tmp.setNumNodo(parser.contador++);
+                RESULT=tmp;
+             :}
+             | vertical {: 
+                Nodo tmp = new Nodo("");
+                tmp.setValor("VERTICAL");
+                tmp.setNumNodo(parser.contador++);
+                RESULT=tmp;
+              :} ;
+ 
+ VISIBLE ::= visible asig bool:i {: 
+                Nodo tmp = new Nodo("VISIBLE");
+                tmp.setValor(i.toString());
+                tmp.setNumNodo(parser.contador++);
+                RESULT=tmp;
+             :};
+
+BORDE ::= borde asig cori numero:i1 coma cadena:i2 coma bool:i3 corf {: 
+                Nodo tmp = new Nodo("BORDE");
+                tmp.setNumNodo(parser.contador++);
+                Nodo tmp1 = new Nodo("TAMANO");
+                tmp1.setNumNodo(parser.contador++);
+                tmp1.setValor(i1.toString());
+                Nodo tmp2 = new Nodo("COLOR");
+                tmp2.setNumNodo(parser.contador++);
+                String str = i2.toString();
+                String ncadena=str.substring(1,str.length()-1);
+                tmp2.setValor(ncadena);
+                Nodo tmp3 = new Nodo("CURVA");
+                tmp3.setNumNodo(parser.contador++);
+                tmp3.setValor(i3.toString());
+                tmp.addHijo((Nodo)tmp1);
+                tmp.addHijo((Nodo)tmp2);
+                tmp.addHijo((Nodo)tmp3);
+                RESULT=tmp;
+         :}; 
+
+OPAQUE ::= opaque asig bool:i {: 
+                Nodo tmp = new Nodo("OPAQUE");
+                tmp.setValor(i.toString());
+                tmp.setNumNodo(parser.contador++);
+                RESULT=tmp;
+          :};
+
+COLORTEXT ::= colortext asig cadena:i {: 
+                 Nodo tmp = new Nodo("COLORTEXT");
+                 tmp.setNumNodo(parser.contador++);
+                 String str = i.toString();
+                 String ncadena=str.substring(1,str.length()-1);
+                 tmp.setValor(ncadena); 
+                 RESULT=tmp; 
+        :};

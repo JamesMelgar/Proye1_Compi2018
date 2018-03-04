@@ -7,9 +7,12 @@ parser code
     public String resultado="";
     public Nodo padre;
     public int contador = 1;
+    public String verror = "";
     @Override
     public void syntax_error(Symbol s){
         System.out.println("Error Sintactico en la Linea " + (s.right+1) +" Columna "+s.left+ ". Identificador " +s.value + " no reconocido." );
+        verror = verror + "Error Sintactico en la Linea " + (s.right+1) +" Columna "+s.left+ ". Identificador " +
+          s.value + " no reconocido."+" CJS"+"\n" ;
     }
 
     @Override
@@ -51,7 +54,6 @@ start with S0;
 
 S0 ::= INICIO:inc {: 
         parser.padre = (Nodo) inc;
-        System.out.println("DOCUMENTO OK"); 
     :};
 
 INICIO ::= INICIO:inc CONTENIDO:con {:
@@ -60,7 +62,7 @@ INICIO ::= INICIO:inc CONTENIDO:con {:
             temp.addHijo((Nodo)con);
             RESULT=temp;
         :}
-         | {:   Nodo tmp = new Nodo("INICIO");
+         | {:   Nodo tmp = new Nodo("INICIO_CJS");
                 tmp.setNumNodo(parser.contador++); 
                 RESULT=tmp;
            :} ;
@@ -124,7 +126,14 @@ VARIABLE ::= dimv id:i TIPO_VARIABLE:tv {:
                 temp.setNombre(nombre);
                 temp.setValor(i.toString());
                 RESULT=temp;
-             :} ;
+             :}
+             | dimv id:i lli E0:ei llf pyc {: 
+                   Nodo tmp = new Nodo("VECTOR_VACIO");
+                   tmp.setValor(i.toString());
+                   tmp.setNumNodo(parser.contador++); 
+                   tmp.addHijo((Nodo)ei);
+                   RESULT=tmp; 
+              :};
 
 TIPO_VARIABLE ::= dpt VECTOR:tmp llf pyc {: 
                     RESULT = tmp;
@@ -140,6 +149,27 @@ TIPO_VARIABLE ::= dpt VECTOR:tmp llf pyc {:
                    tmp.setNumNodo(parser.contador++); 
                    RESULT=tmp; :} ;
 
+VALOR ::= id:i dpt E0:e1 pyc {:
+            Nodo tmp = new Nodo("VARIABLE");
+            tmp.setNumNodo(parser.contador++); 
+            tmp.setValor(i.toString());
+            tmp.addHijo((Nodo)e1);
+            RESULT=tmp;
+        :}
+         | id:i dpt VECTOR:tmp llf pyc {:
+                Nodo temp = (Nodo)tmp; 
+                temp.setNombre("VARIABLE_VECTOR");
+                temp.setValor(i.toString());
+                RESULT = temp;
+          :}  
+         | id:i AVECTOR:tmp llf dpt E0:e1 pyc {: 
+                Nodo temp;
+                temp = (Nodo) tmp;
+                temp.setValor(i.toString());
+                temp.addHijo((Nodo)e1);
+                RESULT=temp;
+            :};
+
 VECTOR ::= VECTOR:tmp coma E0:e1 {: 
             Nodo temp;
             temp = (Nodo) tmp;
@@ -150,23 +180,16 @@ VECTOR ::= VECTOR:tmp coma E0:e1 {:
             RESULT=tmp;
          :};
 
+AVECTOR ::= lli E0:e1 {: 
+            Nodo tmp = new Nodo("VECTOR");
+            tmp.setNumNodo(parser.contador++); 
+            tmp.addHijo((Nodo)e1); 
+            RESULT=tmp;
+        :} ;
+
 E0 ::= CONDICION:tmp {:
          RESULT=tmp;
      :} ;
-
-VALOR ::= id:i dpt E0:e1 pyc {:
-            Nodo tmp = new Nodo("VARIABLE");
-            tmp.setNumNodo(parser.contador++); 
-            tmp.setValor(i.toString());
-            tmp.addHijo((Nodo)e1);
-            RESULT=tmp;
-        :}
-         | id:i AVECTOR:tmp llf dpt E0:e1 pyc {: 
-                Nodo temp;
-                temp = (Nodo) tmp;
-                temp.setValor(i.toString());
-                RESULT=tmp;
-            :};
 
 CONDICION ::= CONDICION:c1 and CONDICION:c2 {:
                       Nodo tmp = new Nodo("AND");
@@ -301,13 +324,17 @@ EXPRESION ::= EXPRESION:e1 suma EXPRESION:e2{:
 
 TIPO ::=   datetime:i {: 
             Nodo tmp = new Nodo("DATATIME");
-            tmp.setValor(i.toString());
+            String str = i.toString();
+            String ncadena=str.substring(1,str.length()-1);
+            tmp.setValor(ncadena);
             tmp.setNumNodo(parser.contador++); 
             RESULT=tmp; 
         :}
         | date:i {: 
             Nodo tmp = new Nodo("DATE");
-            tmp.setValor(i.toString());
+            String str = i.toString();
+            String ncadena=str.substring(1,str.length()-1);
+            tmp.setValor(ncadena);
             tmp.setNumNodo(parser.contador++); 
             RESULT=tmp;
         :}
@@ -320,8 +347,10 @@ TIPO ::=   datetime:i {:
             RESULT=tmp; 
         :}
         | bool:i {: 
-            Nodo tmp = new Nodo("BOOl");
-            tmp.setValor(i.toString());
+            Nodo tmp = new Nodo("BOOL");
+            String str = i.toString();
+            String ncadena=str.substring(1,str.length()-1);
+            tmp.setValor(ncadena);
             tmp.setNumNodo(parser.contador++); 
             RESULT=tmp; 
         :}
@@ -363,13 +392,6 @@ TIPO ::=   datetime:i {:
             tmp.setValor(i.toString());
             tmp.setNumNodo(parser.contador++); 
             RESULT=tmp; 
-        :} ;
-
-AVECTOR ::= lli E0:e1 {: 
-            Nodo tmp = new Nodo("VECTOR");
-            tmp.setNumNodo(parser.contador++); 
-            tmp.addHijo((Nodo)e1); 
-            RESULT=tmp;
         :} ;
 
 SI ::=  SI:tmp CONTENIDO:con {: 
@@ -503,6 +525,7 @@ FUNCION ::= FUNCION:tmp CONTENIDO:con{:
             | funcion id:i pari PARAMETRO:e1 lli {: 
                 Nodo tmp = new Nodo("FUNCION");
                 tmp.setNumNodo(parser.contador++); 
+                tmp.setValor(i.toString());
                 tmp.addHijo((Nodo)e1);
                 RESULT=tmp;
             :};
